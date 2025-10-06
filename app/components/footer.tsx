@@ -4,9 +4,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-row bg-[#261B02] text-white py-10 px-6 md:px-16">
+    <footer className="flex flex-col bg-[#261B02] text-white py-10 px-6 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-        <div className="flex flex-col items-end justify-between h-full">
+        <div className="flex flex-col items-end justify-center h-full">
           <Image
             src="/logo.svg"
             alt="Ridero Logo"
@@ -14,7 +14,14 @@ const Footer = () => {
             height={44}
             className="object-contain"
           />
-          
+          <span
+        className=" font-semibold text-center"
+        style={{
+          fontSize: 16,
+        }}
+      >
+        RIDERO
+      </span>
         </div>
         <div className="space-y-4">
           <p className="text-sm text-gray-300 leading-relaxed">
@@ -44,10 +51,16 @@ Charlottesville, California 44635
         </div>
 
       </div>
-      <div >
-
-        
-        © 2020 Ridero. All rights reserved.
+      <div className="flex flex-row items-center " >
+        <div>
+            <p>
+                (434) 546-4356
+            </p>
+            <p>
+                contact@lift.agencyr.com
+            </p>
+        </div>
+        <p>© 2020 Ridero. All rights reserved.</p>
       </div>
     </footer>
   );
