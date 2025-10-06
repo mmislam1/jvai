@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#261B02] text-white py-10 px-6 md:px-16">
+    <footer className="flex flex-row bg-[#261B02] text-white py-10 px-6 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
         <div className="flex flex-col items-end justify-between h-full">
           <Image
@@ -36,12 +36,15 @@ Charlottesville, California 44635
         <div>
           
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><Link href="/help" className="hover:text-[#EFB639]">Help Center</Link></li>
-            <li><Link href="/contact" className="hover:text-[#EFB639]">Contact Us</Link></li>
-            <li><Link href="/faq" className="hover:text-[#EFB639]">FAQ</Link></li>
-            <li><Link href="/terms" className="hover:text-[#EFB639]">Terms of Service</Link></li>
+            <li><Link href="/Facebook" className="hover:text-[#EFB639]">Facebook</Link></li>
+            <li><Link href="/Twitter" className="hover:text-[#EFB639]">Twitter</Link></li>
+            <li><Link href="/Linkedin" className="hover:text-[#EFB639]">Linkedin</Link></li>
+            <li><Link href="/Instagram" className="hover:text-[#EFB639]">Instagram</Link></li>
           </ul>
         </div>
+
+      </div>
+      <div >
 
         
         © 2020 Ridero. All rights reserved.
