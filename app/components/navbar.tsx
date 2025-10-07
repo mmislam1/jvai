@@ -23,7 +23,7 @@ const Navbar = () => {
         <Logo/>
       </Link>
 
-      <div className="flex gap-8 text-gray-700 font-medium">
+      <div className="text1 text-[#545454]">
         {navLinks.map((link) => (
           <Link
             key={link.name}
@@ -32,7 +32,7 @@ const Navbar = () => {
               pathname === link.href
                 ? "text-[#EFB639] font-semibold"
                 : "hover:text-[#EFB639]"
-            }`}
+            } px-3`}
           >
             {link.name}
           </Link>
@@ -42,13 +42,13 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         <Link
           href="/login"
-          className="px-5 py-2 border border-gray-400 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+          className="text1 px-5 py-2 border border-gray-400 rounded-lg text-[#333333] hover:bg-gray-100 transition"
         >
           Login
         </Link>
         <Link
           href="/signup"
-          className="buttonColor text-white px-5 py-2 rounded-lg font-semibold shadow hover:opacity-90 transition"
+          className="text1 buttonColor text-white px-5 py-2 rounded-lg font-semibold shadow hover:opacity-90 transition"
         >
           Sign Up
         </Link>

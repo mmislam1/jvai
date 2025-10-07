@@ -4,8 +4,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-row bg-[#261B02] text-white py-10 px-6 md:px-16">
-        <div className="flex flex-col items-center justify-center h-full px-30">
+    <div className="flex flex-row bg-[#261B02] justify-center text-white py-10 px-6 md:px-16">
+        <div className="flex flex-col items-center justify-center h-full px-40">
           <Image
             src="/logo.svg"
             alt="Ridero Logo"
@@ -66,7 +66,7 @@ Charlottesville, California 44635
         <p className="text-white text-sm">© 2020 Lift media. All rights reserved.</p>
       </div>
       </div>
-    </footer>
+    </div>
   );
 };
 
