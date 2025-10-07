@@ -42,3 +42,48 @@ border-top-left-radius: 80px;
 border-bottom-left-radius: 80px;
 
 }
+
+.title1{
+  font-family: Inter;
+font-weight: 600;
+font-style: Semi Bold;
+font-size: 48px;
+line-height: 56px;
+letter-spacing: 0%;
+
+}
+
+.mmForm {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+  gap: 12px;
+  margin-top: 30px;              
+}
+
+.mmForm input,
+.mmForm textarea,
+.mmForm select {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;                       
+  border-bottom: 1px solid #000000;   
+  padding: 10px 6px;
+  background: transparent;
+  outline: none;
+  color: inherit;
+}
+
+
+.mmForm input::placeholder,
+.mmForm textarea::placeholder {
+  color: #5a5a5a;
+}
+
+.mmForm input:disabled,
+.mmForm textarea:disabled,
+.mmForm select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

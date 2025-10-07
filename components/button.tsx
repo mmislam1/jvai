@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   borderColor,
   backgroundColor,
-  textColor,
+  textColor='#ffffff',
   size = 52,
   className = "",
 }) => {
