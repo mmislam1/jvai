@@ -72,13 +72,20 @@ letter-spacing: 0%;
   padding: 10px 6px;
   background: transparent;
   outline: none;
-  color: inherit;
+  
 }
 
 
 .mmForm input::placeholder,
 .mmForm textarea::placeholder {
   color: #5a5a5a;
+  font-family: Inter;
+font-weight: 500;
+font-style: Medium;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: 0%;
+
 }
 
 .mmForm input:disabled,
