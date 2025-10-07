@@ -34,3 +34,11 @@ line-height: 28px;
 letter-spacing: 0%;
 
 }
+
+.imageHolder{
+  width: 385;
+height: 542;
+border-top-left-radius: 80px;
+border-bottom-left-radius: 80px;
+
+}
