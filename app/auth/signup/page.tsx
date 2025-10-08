@@ -1,7 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useAppDispatch,useAppSelector } from "@/app/store/hooks";
+import { registerUser } from "@/app/store/authSlice";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+
+    const router=useRouter()
+    const dispatch = useAppDispatch();
+    const authData = useAppSelector((state) => state.auth);
 
   type FormData = {
     password2: string;
@@ -26,9 +33,24 @@ export default function SignUp() {
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    if (authData.user) {
+      router.push("/");
+    }
+  }, [authData.user, router]);
+
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    dispatch(registerUser(formData))
+    setFormData({password2: '',
+    password:'',
+    email: '',
+    name: '',
+    phone: '',
+    adress: '',})
+
+
   };
 
   return (

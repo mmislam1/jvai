@@ -41,13 +41,13 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4">
         <Link
-          href="/login"
+          href="/auth/signin"
           className="text1 px-5 py-2 border border-gray-400 rounded-lg text-[#333333] hover:bg-gray-100 transition"
         >
           Login
         </Link>
         <Link
-          href="/signup"
+          href="/auth/signup"
           className="text1 buttonColor text-white px-5 py-2 rounded-lg font-semibold shadow hover:opacity-90 transition"
         >
           Sign Up

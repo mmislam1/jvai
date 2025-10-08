@@ -4,20 +4,23 @@ import RoundedImage from "../../components/roundedImage";
 import Logo from "../../components/logo";
 import Image from "next/image";
 import Button from "../../components/button";
+import { useRouter } from "next/navigation";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 const AuthLayout = ({children}:AuthLayoutProps) => {
 
+  const router=useRouter()
+
   const [userType,setUserType]=useState<string>('customer')
 
   return (
-    <div className="flex flex-col w-[1100px] ">
+    <div className="flex flex-col w-[1100px] m-10 ">
       
       <div className="pt-2 w-full">
         <div className="flex flex-row items-center h-[65px] mb-10">
-          <Image src='/arrow.png' alt='arrow' width={48} height={48}></Image>
+          <button onClick={()=>router.back()} className="pr-2"><Image src='/arrow.png' alt='arrow' width={48} height={48}></Image></button>
           <Logo></Logo>
         </div>
       </div>

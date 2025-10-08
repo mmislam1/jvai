@@ -24,25 +24,34 @@ const initialState: AuthState = {
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (credentials: { email: string; password: string }) => {
-    const res = await fetch("/api/auth/login", {
+    /*const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
     });
     if (!res.ok) throw new Error("Login failed");
-    return (await res.json()) as { user: User; accessToken: string; refreshToken: string };
+    return (await res.json()) as { user: User; accessToken: string; refreshToken: string };*/
+    return {user:{id:'1',name:'mm',email:'mmislam272@gmail.com',image:''},accessToken: "", refreshToken: ''}
   }
 );
 
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async (formData: FormData) => {
-    const res = await fetch("/api/auth/register", {
+  async (formData: {
+    password2: string;
+    password: string;
+    email: string;
+    name: string;
+    phone: string;
+    adress: string;
+  }) => {
+    /*const res = await fetch("/api/auth/register", {
       method: "POST",
       body: formData,
     });
     if (!res.ok) throw new Error("Register failed");
-    return (await res.json()) as { user: User; accessToken: string; refreshToken: string };
+    return (await res.json()) as { user: User; accessToken: string; refreshToken: string };*/
+    return {user:{id:'1',name:'mm',email:'mmislam272@gmail.com',image:''},accessToken: "", refreshToken: ''}
   }
 );
 

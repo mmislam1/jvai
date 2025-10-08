@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <ReduxProvider>
       <body className={`${inter.variable} antialiased flex flex-col items-center `}>
-        <Navbar></Navbar>
+        
         {children}
 
       </body>
