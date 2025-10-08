@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar.tsx";
+import Navbar from "./components/navbar";
 import ReduxProvider from "./providers/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
