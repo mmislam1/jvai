@@ -105,7 +105,7 @@ export default function SignUp() {
         className="text1 my-4 p-4 w-full"
       />
       
-      <button type="submit" className="buttonColor w-[100%] text-white px-4 p-2 mt-10 rounded ${formData.password!==formData.password2? 'disabled':''}">
+      <button type="submit" disabled={formData.password!==formData.password2? true:false} className="buttonColor w-[100%] text-white px-4 p-2 mt-10 rounded" style={{background:`${formData.password!==formData.password2? '#aaaaaa':''}`}}>
         <p className="text1">Sign Up</p>
       </button>
     </form>
