@@ -1,8 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ForgotPassword() {
-
+  
+  const router = useRouter()
   type FormData = {
 
     email: string;
@@ -36,7 +38,7 @@ export default function ForgotPassword() {
       />
       
       
-      <button type="submit" className="buttonColor w-[100%] text-white px-4 p-2 mt-10 rounded">
+      <button type="submit" onClick={()=>router.push('/auth/otp')}className="buttonColor w-[100%] text-white px-4 p-2 mt-10 rounded">
         <p className="text1">Send OTP</p>
       </button>
     </form>

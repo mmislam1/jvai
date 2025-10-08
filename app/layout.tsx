@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <ReduxProvider>
-      <body className={`${inter.variable} antialiased flex flex-col items-center `}>
+      <body className={`${inter.variable} antialiased flex flex-col items-center`}>
         
         {children}
 
