@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Logo from "../../components/logo";
+import { useDeviceType } from "../hooks/useDeviceType";
 
 const Navbar = () => {
   const pathname = usePathname();
-
+  const isMobile=useDeviceType()
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "How it works", href: "/how-it-works" },
@@ -23,7 +24,7 @@ const Navbar = () => {
         <Logo/>
       </Link>
 
-      <div className="text1 text-[#545454]">
+      {isMobile&&(<div className="text1 text-[#545454]">
         {navLinks.map((link) => (
           <Link
             key={link.name}
@@ -37,7 +38,7 @@ const Navbar = () => {
             {link.name}
           </Link>
         ))}
-      </div>
+      </div>)}
 
       <div className="flex items-center gap-4">
         <Link
@@ -53,6 +54,7 @@ const Navbar = () => {
           Sign Up
         </Link>
       </div>
+      
     </nav>
   );
 };
