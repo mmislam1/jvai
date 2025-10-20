@@ -94,3 +94,8 @@ letter-spacing: 0%;
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.navbarRounded{
+  border-radius: 20px;
+  box-shadow: #5a5a5a 5px;
+}
