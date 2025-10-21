@@ -51,6 +51,11 @@ export default function Home() {
               </div>
               
           </div>
+          <div className="box box1 p-4">
+            <div className="box box1 p-4"></div>
+            <div className="box box1 p-4"></div>
+            <div className="box box1 p-4"></div>
+          </div>
         </div>
       </main>
       <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center">

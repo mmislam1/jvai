@@ -95,12 +95,17 @@ letter-spacing: 0%;
   cursor: not-allowed;
 }
 
-.box1{
+.box{
   border-radius: 20px; 
-  box-shadow: 0 0 15px gray;
+  box-shadow: 0 0 25px rgb(194, 194, 194);
   margin: 5px;
   display: flex;
   flex-direction: row;
   justify-content:space-around;
   align-items: center;
+}
+
+.box1{
+  min-height: 200px;
+  min-width: 200px;
 }
