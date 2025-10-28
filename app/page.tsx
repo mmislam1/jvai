@@ -4,7 +4,6 @@ import RoundedImage from "@/components/roundedImage";
 import Navbar from "./components/navbar";
 import Button from "@/components/button";
 
-
 export default function Home() {
   return (
     <div className="w-full font-sans grid grid-rows-[100px_1fr_130px] min-h-screen ">
@@ -14,42 +13,118 @@ export default function Home() {
       <main className="flex flex-col row-start-2 items-center justify-start self-start">
         <div className="flex flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] px-[150px] pt-[32px] pb-[50px]">
           <div className="pt-10 pr-20">
-            <p className='title1 text-white'>Simplify Your Parts Delivery </p>
+            <p className="title1 text-white">Simplify Your Parts Delivery </p>
             <p className="title1 text-[#C59325]">-Track, Manage, Deliver</p>
             <div className="flex flex-col items-start justify-start mt-45">
               <div className="flex flex-row items-center justify-between h-[60px] w-[350px]">
-                <Button size={60} text='Get Started' className="text1 px-10"/>
-                <a href="https/youtube.com" className=""><h3 className=" text1 text-[#ffffff]">Watch Demo</h3></a>
+                <Button size={60} text="Get Started" className="text1 px-10" />
+                <a href="https/youtube.com" className="">
+                  <h3 className=" text1 text-[#ffffff]">Watch Demo</h3>
+                </a>
               </div>
             </div>
           </div>
           <div className="">
-            <RoundedImage src='/driver2.png' curvature={80} side='left' height={542} width={385}/>
+            <RoundedImage
+              src="/driver2.png"
+              curvature={80}
+              side="left"
+              height={542}
+              width={385}
+            />
           </div>
         </div>
 
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center">
-              <div className="flex gap-4 m-10">
-                <p className="title1 text-black">How it </p> 
-                <p className="title1 text-[#ddaa33]">Works</p> 
-              </div>
-              <p className="text1 px-70">Order your truck parts, request a delivery, and get them at your doorstep - fast, reliable, and hassle-free</p>
+            <div className="flex gap-4 m-10">
+              <p className="title1 text-black">How it </p>
+              <p className="title1 text-[#ddaa33]">Works</p>
+            </div>
+            <p className="text1 px-70">
+              Order your truck parts, request a delivery, and get them at your
+              doorstep - fast, reliable, and hassle-free
+            </p>
           </div>
-          <div className="flex flex-row items-center justify-between px-[150px] m-10 flex-[1fr-1fr-1fr] h-[350px] w-full ">
-              <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
-                <div className="flex h-[35%] w-full bg-[#ddaa3355]"></div>
-                <div className="flex"></div>
+          <div className="flex  flex-col md:flex-row items-center justify-between px-[150px] m-10 flex-[1fr-1fr-1fr] md:h-[350px] gap-6 border w-full ">
+            <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
+              <div className="flex h-[35%] w-full bg-[#ddaa3344] items-center justify-center py-4">
+                <Image
+                  src={"/customerVector.png"}
+                  alt={"customer Vector"}
+                  width={72}
+                  height={72}
+                ></Image>
               </div>
-              <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
-                <div className="flex h-[35%] w-full bg-[#ddaa3355]"></div>
-                <div className="flex"></div>
+              <div className="flex flex-col items-center justify-center flex-wrap">
+                <h2 className="m-4 mb-6 font-semibold text-xl">Customer</h2>
+                <div className="flex flex-col justify-start items-start">
+                  <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
+                    <li className="text-sm">
+                      Order parts from a connected company
+                    </li>
+                    <li className="text-sm">
+                      Submit delivery request with order ID
+                    </li>
+                    <li className="text-sm">
+                      Track delivery live and get notifications
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
-                <div className="flex h-[35%] w-full bg-[#ddaa3355]"></div>
-                <div className="flex"></div>
+            </div>
+            <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
+              <div className="flex h-[35%] w-full bg-[#ddaa3344] items-center justify-center py-4">
+                <Image
+                  src={"/driverVector.png"}
+                  alt={"company Vector"}
+                  width={72}
+                  height={72}
+                ></Image>
               </div>
-              
+              <div className="flex flex-col items-center justify-center">
+                <h2 className="m-4 mb-6 font-semibold text-xl">Driver</h2>
+                <div className="flex flex-col justify-start items-start">
+                  <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
+                    <li className="text-sm">
+                      Accept delivery task from company.
+                    </li>
+                    <li className="text-sm">
+                      Collect parts and follow delivery route
+                    </li>
+                    <li className="text-sm">
+                      Update delivery status; get paid delivery
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
+              <div className="flex h-[35%] w-full bg-[#ddaa3344] items-center justify-center py-4">
+                <Image
+                  src={"/companyVector.png"}
+                  alt={"Company Vector"}
+                  width={72}
+                  height={72}
+                ></Image>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <h2 className="m-4 mb-6 font-semibold text-xl">Company</h2>
+                <div className="flex flex-col justify-start items-start">
+                  <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
+                    <li className="text-sm">
+                      Receive customer delivery requests
+                    </li>
+                    <li className="text-sm">
+                      Assign drivers and monitor progress
+                    </li>
+                    <li className="text-sm">
+                      Access reports, analytics for all deliveries
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="box box1 p-4">
             <div className="box box1 p-4"></div>
@@ -59,7 +134,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center">
-        <Footer/>
+        <Footer />
       </footer>
     </div>
   );
