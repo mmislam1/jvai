@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Footer from "./components/footer";
 import RoundedImage from "@/components/roundedImage";
 import Navbar from "./components/navbar";
 import Button from "@/components/button";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,12 +15,12 @@ export default function Home() {
         <Navbar></Navbar>
       </header>
       <main className="flex flex-col row-start-2 items-center justify-start self-start">
-        <div className="flex flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] px-[150px] pt-[32px] pb-[50px]">
-          <div className="pt-10 pr-20">
+        <div className="flex flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] md:px-[150px] pt-[32px] pb-[50px]">
+          <div className="pt-10 md:pr-20">
             <p className="title1 text-white">Simplify Your Parts Delivery </p>
             <p className="title1 text-[#C59325]">-Track, Manage, Deliver</p>
             <div className="flex flex-col items-start justify-start mt-45">
-              <div className="flex flex-row items-center justify-between h-[60px] w-[350px]">
+              <div className="flex flex-row items-center justify-between h-[60px] w-full md:w-[350px]">
                 <Button size={60} text="Get Started" className="text1 px-10" />
                 <a href="https/youtube.com" className="">
                   <h3 className=" text1 text-[#ffffff]">Watch Demo</h3>
@@ -46,7 +50,7 @@ export default function Home() {
               doorstep - fast, reliable, and hassle-free
             </p>
           </div>
-          <div className="flex  flex-col md:flex-row items-center justify-between px-[150px] m-10 flex-[1fr-1fr-1fr] md:h-[350px] gap-6 border w-full ">
+          <div className="flex  flex-col md:flex-row items-center justify-between px-[150px] m-10 flex-[1fr-1fr-1fr] md:h-[350px] gap-6  w-full ">
             <div className="flex flex-col h-full min-w-[350px] rounded-[10%] overflow-hidden shadow-xl">
               <div className="flex h-[35%] w-full bg-[#ddaa3344] items-center justify-center py-4">
                 <Image
@@ -57,7 +61,7 @@ export default function Home() {
                 ></Image>
               </div>
               <div className="flex flex-col items-center justify-center flex-wrap">
-                <h2 className="m-4 mb-6 font-semibold text-xl">Customer</h2>
+                <h2 className="m-4 mb-6 font-semibold text-2xl">Customer</h2>
                 <div className="flex flex-col justify-start items-start">
                   <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
                     <li className="text-sm">
@@ -83,7 +87,7 @@ export default function Home() {
                 ></Image>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h2 className="m-4 mb-6 font-semibold text-xl">Driver</h2>
+                <h2 className="m-4 mb-6 font-semibold text-2xl">Driver</h2>
                 <div className="flex flex-col justify-start items-start">
                   <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
                     <li className="text-sm">
@@ -109,7 +113,7 @@ export default function Home() {
                 ></Image>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h2 className="m-4 mb-6 font-semibold text-xl">Company</h2>
+                <h2 className="m-4 mb-6 font-semibold text-2xl">Company</h2>
                 <div className="flex flex-col justify-start items-start">
                   <ul className="list-disc marker:text-yellow-500 space-y-3 pb-8">
                     <li className="text-sm">
@@ -126,10 +130,144 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="box box1 p-4">
-            <div className="box box1 p-4"></div>
-            <div className="box box1 p-4"></div>
-            <div className="box box1 p-4"></div>
+          <div className="flex justify-center items-center">
+            <Button
+              text={"Join Now"}
+              onClick={() => redirect("/auth/signup")}
+              className="w-full md:w-[200px]"
+            ></Button>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center bg-[#ddaa3344] w-full p-4 m-6">
+          <div className="flex flex-row items-center justify-center gap-2 mt-4">
+            <h1 className="text-4xl font-semibold">Key</h1>
+            <h1 className="text-4xl text-[#ddaa33ff]  font-semibold">
+              Features
+            </h1>
+          </div>
+          <div className="flex flex-col justify-center items-center m-6 md:w-[40%]">
+            <p className="text-2xl flex flex-col justify-center items-center">From order placement to successful delivery - everything managed in one smart platform</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 items-center justify-center py-4">
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf1.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Easy Order Placement</h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Customers can quickly submit delivery requests using the order number </p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf2.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Real-Time Tracking</h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Customers and companies can track orders live with location</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf3.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Driver Tools </h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Drivers get assigned jobs, see optimized routes, update status</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf4.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Company Dashboard</h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Companies manage all their deliveries, check driver activities</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf5.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Notifications & Alerts</h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Customers, drivers, and companies receive instant notifications</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
+              <div className="flex flex-col p-2 items-center justify-center w-full">
+                <Image
+                  src={"/kf6.png"}
+                  alt={"Company Vector"}
+                  width={50}
+                  height={50}
+                ></Image>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-2 ">
+                <h1 className="text-2xl font-semibold">Secure Payments </h1>
+              </div>
+              <div className="flex flex-col justify-center items-center m-2 w-full">
+                <p className="text-lg flex flex-col justify-center items-center">Companies manage payments while drivers after completing jobs.</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <Button
+              text={"Watch Demo"}
+              onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
+              className="w-full md:w-[200px] m-6"
+            ></Button>
+          </div>
+        </div>
+        <div className="flex items-center justify-center p-4 bg-white shadow-2xl rounded-xl border">
+          <div className="flex flex-col items-center justify-start">
+            <div className="flex flex-row items-center justify-between p-4"></div>
+            <div className="flex items-center justify-between">
+              <Image
+              src={"/kf6.png"}
+              alt={"Company Vector"}
+              width={50}
+              height={50}
+            ></Image></div>
+            <div className="flex flex-col">
+              
+            </div>
           </div>
         </div>
       </main>
