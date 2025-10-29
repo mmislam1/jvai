@@ -1,13 +1,8 @@
 "use client";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../store/authSlice";
-
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
-});
+import authReducer from "../store/features/authSlice";
+import {store} from '../store/store'
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

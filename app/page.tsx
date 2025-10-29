@@ -7,13 +7,49 @@ import Navbar from "./components/navbar";
 import Button from "@/components/button";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { FaStar, FaRegStar } from "react-icons/fa"
+import Icon from "@/components/icon";
 
 export default function Home() {
+  interface UserSay {
+    rating: number;
+    location: string;
+    img: string;
+    title: string;
+    occupation: string;
+    comment: string;
+  }
+
+  const userSay: UserSay[] = [
+    {
+      rating: 5,
+      location: "AutoPartsBD",
+      img: "/Ellipse 7.png",
+      title: "Freddie Deckow",
+      occupation: "HR of AutoPartsBD",
+      comment: "TruckTrack made our deliveries faster and more transparent!",
+    },
+    {
+      rating: 4,
+      location: "Baridhara",
+      img: "/Ellipse 7.png",
+      title: "Rahim ",
+      occupation: "Customers",
+      comment: "Customers are happier with real-time updates",
+    },
+    {
+      rating: 3,
+      location: "Dhaka",
+      img: "/Ellipse 7.png",
+      title: "Karim ",
+      occupation: "Driver",
+      comment: "Drivers love the live tracking and easy payment system!",
+    },
+  ];
+
   return (
     <div className="w-full font-sans grid grid-rows-[100px_1fr_130px] min-h-screen ">
-      <header className=" w-full">
-        <Navbar></Navbar>
-      </header>
+      
       <main className="flex flex-col row-start-2 items-center justify-start self-start">
         <div className="flex flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] md:px-[150px] pt-[32px] pb-[50px]">
           <div className="pt-10 md:pr-20">
@@ -146,9 +182,12 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex flex-col justify-center items-center m-6 md:w-[40%]">
-            <p className="text-2xl flex flex-col justify-center items-center">From order placement to successful delivery - everything managed in one smart platform</p>
+            <p className="text-2xl flex flex-col justify-center items-center">
+              From order placement to successful delivery - everything managed
+              in one smart platform
+            </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 items-center justify-center py-4">
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
               <div className="flex flex-col p-2 items-center justify-center w-full">
@@ -163,7 +202,10 @@ export default function Home() {
                 <h1 className="text-2xl font-semibold">Easy Order Placement</h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Customers can quickly submit delivery requests using the order number </p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Customers can quickly submit delivery requests using the order
+                  number{" "}
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
@@ -179,7 +221,9 @@ export default function Home() {
                 <h1 className="text-2xl font-semibold">Real-Time Tracking</h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Customers and companies can track orders live with location</p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Customers and companies can track orders live with location
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
@@ -195,7 +239,9 @@ export default function Home() {
                 <h1 className="text-2xl font-semibold">Driver Tools </h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Drivers get assigned jobs, see optimized routes, update status</p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Drivers get assigned jobs, see optimized routes, update status
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
@@ -211,7 +257,9 @@ export default function Home() {
                 <h1 className="text-2xl font-semibold">Company Dashboard</h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Companies manage all their deliveries, check driver activities</p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Companies manage all their deliveries, check driver activities
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-[100px] shadow-2xl">
@@ -224,10 +272,15 @@ export default function Home() {
                 ></Image>
               </div>
               <div className="flex flex-row items-center justify-center gap-2 ">
-                <h1 className="text-2xl font-semibold">Notifications & Alerts</h1>
+                <h1 className="text-2xl font-semibold">
+                  Notifications & Alerts
+                </h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Customers, drivers, and companies receive instant notifications</p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Customers, drivers, and companies receive instant
+                  notifications
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-4 bg-white h-[227px] w-[354px] rounded-3xl shadow-2xl">
@@ -243,37 +296,67 @@ export default function Home() {
                 <h1 className="text-2xl font-semibold">Secure Payments </h1>
               </div>
               <div className="flex flex-col justify-center items-center m-2 w-full">
-                <p className="text-lg flex flex-col justify-center items-center">Companies manage payments while drivers after completing jobs.</p>
+                <p className="text-lg flex flex-col justify-center items-center">
+                  Companies manage payments while drivers after completing jobs.
+                </p>
               </div>
             </div>
           </div>
           <div className="flex justify-center items-center">
             <Button
               text={"Watch Demo"}
-              onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                  "_blank"
+                )
+              }
               className="w-full md:w-[200px] m-6"
             ></Button>
           </div>
         </div>
-        <div className="flex items-center justify-center p-4 bg-white shadow-2xl rounded-xl border">
-          <div className="flex flex-col items-center justify-start">
-            <div className="flex flex-row items-center justify-between p-4"></div>
-            <div className="flex items-center justify-between">
-              <Image
-              src={"/kf6.png"}
-              alt={"Company Vector"}
-              width={50}
-              height={50}
-            ></Image></div>
-            <div className="flex flex-col">
-              
-            </div>
-          </div>
+
+        <div className="flex flex-row gap-8 items-center justify-center w-[full]">
+          {userSay.map((card,ii) => {
+            return (
+              <div key={ii} className="flex items-center justify-center p-4 py-6 bg-white shadow-2xl rounded-xl w-[360px] h-[415px]">
+                <div className="flex flex-col items-center justify-start w-full h-full">
+                  <div className="flex flex-row items-center justify-between w-full">
+                    <div className="flex flex-row">
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <span key={i}><Icon icon={i>=card.rating?FaRegStar:FaStar} className={'text-yellow-400 h-[13px]'} ></Icon></span>
+                      ))}
+                    </div>
+                    <div className="flex flex-row"><p className="text-md">{card.location}</p></div>
+                  </div>
+                  <div className="flex items-center justify-between overflow-hidden h-[220px] ">
+                    <Image
+                      src={card.img}
+                      alt={"Company Vector"}
+                      width={250}
+                      height={250}
+                    ></Image>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-col items-center justify-center gap-2 ">
+                      <h1 className="text-2xl font-semibold">
+                        {card.title}
+                      </h1>
+                      <h4 className="text-md text-gray-600">{card.occupation}</h4>
+                    </div>
+                    <div className="flex flex-col justify-center items-center m-2 w-full">
+                      <p className="text-md flex flex-col justify-center items-center">
+                        {card.comment}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </main>
-      <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center">
-        <Footer />
-      </footer>
+      
     </div>
   );
 }

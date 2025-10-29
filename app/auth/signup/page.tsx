@@ -1,7 +1,7 @@
 "use client";
 import { useState,useEffect } from "react";
 import { useAppDispatch,useAppSelector } from "@/app/store/hooks";
-import { registerUser } from "@/app/store/authSlice";
+import { registerUser } from "@/app/store/features/authSlice";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {

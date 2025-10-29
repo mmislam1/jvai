@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { loginUser } from "@/app/store/authSlice";
+import { loginUser } from "@/app/store/features/authSlice";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
