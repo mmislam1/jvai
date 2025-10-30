@@ -30,7 +30,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-30 md:ml-30 items-start">
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-20 md:gap-35 md:ml-30 items-start">
           <div>
             <ul className="space-y-2 text-white text-sm">
               <li>
