@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction ,createAsyncThunk} from "@reduxjs/toolkit";
 
 interface Activity {
   id: string;
@@ -19,6 +19,14 @@ interface CustomerState {
   name: string;
   email: string;
   phone: string;
+  notifications: Notification[];
+}
+
+interface Notification {
+  id: string;
+  orderId: string;
+  message: string;
+  timestamp: number;
 }
 
 const initialState: CustomerState = {
@@ -65,10 +73,74 @@ const initialState: CustomerState = {
       },
     ],
   },
-  name:'',
-  email:'',
-  phone:''
+  name: "",
+  email: "",
+  phone: "",
+  notifications: [
+    {
+      id: "1",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "2",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "3",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "4",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "5",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "6",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+    {
+      id: "7",
+      orderId: "ID#12345",
+      message: "Driver on the way",
+      timestamp: 1,
+    },
+  ],
 };
+
+export const fetchNotifications = createAsyncThunk(
+  'notifications/fetchNotifications',
+  async (_, { rejectWithValue }) => {
+    try {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      const mockData: Notification[] = Array.from({ length: 7 }, (_, i) => ({
+        id: `notif-${i + 1}`,
+        orderId: 'ID#12345',
+        message: 'Driver on the way',
+        timestamp: (Date.now() - (2 * 60 * 60 * 1000)),
+      }));
+      
+      return mockData;
+    } catch (error) {
+      return rejectWithValue('Failed to fetch notifications');
+    }
+  }
+);
 
 export const customerSlice = createSlice({
   name: "customer",
@@ -86,13 +158,21 @@ export const customerSlice = createSlice({
     addActivity: (state, action: PayloadAction<Activity>) => {
       state.delivery.activities.unshift(action.payload);
     },
+    deleteNotification: (state, action: PayloadAction<string>) => {
+      state.notifications = state.notifications.filter(n => n.id !== action.payload);
+    },
+    clearAllNotifications: (state) => {
+      state.notifications = [];
+    },
   },
 });
 
 export const {
   updateDeliverers,
-    updatePendingOrders,
-    updateCompletedOrders,
-    addActivity
+  updatePendingOrders,
+  updateCompletedOrders,
+  addActivity,
+  deleteNotification,
+  clearAllNotifications
 } = customerSlice.actions;
 export default customerSlice.reducer;
