@@ -42,13 +42,12 @@ export default function DeliveryRequestPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100 p-4 sm:p-6 lg:p-8">
-            <div className="mx-auto max-w-2xl">
+        <div className="flex flex-col items-center max-w-2xl md:max-w-5xl justify-center w-full min-h-screen p-2 sm:p-2 lg:p-6">
+            <div className="flex flex-col items-center justify-center w-full">
                 {/* Header */}
-                <div className="mb-8 flex items-center gap-4">
-                    <Link
+                <Link
                         href="/"
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-gray-600 shadow-md transition-all hover:shadow-lg active:scale-95"
+                        className="flex mr-auto h-10 w-10 items-center justify-center rounded-lg bg-white text-gray-600 shadow-md transition-all hover:shadow-lg active:scale-95"
                         aria-label="Go back"
                     >
                         <svg
@@ -65,6 +64,8 @@ export default function DeliveryRequestPage() {
                             />
                         </svg>
                     </Link>
+                <div className="w-full mb-8 flex items-center justify-center gap-4">
+                    
                     <h1 className="text-3xl font-bold text-amber-600 sm:text-4xl">
                         Delivery Request
                     </h1>
@@ -98,7 +99,7 @@ export default function DeliveryRequestPage() {
 
                 {/* Form */}
                 {!success || !submitted ? (
-                    <form onSubmit={handleSubmit} className="space-y-6 rounded-xl bg-white p-6 shadow-lg sm:p-8">
+                    <form onSubmit={handleSubmit} className="w-full space-y-6 rounded-xl bg-white p-6 shadow-lg sm:p-8">
                         {/* Order ID */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">
