@@ -22,9 +22,9 @@ const Footer = () => {
           RIDERO
         </span>
       </div>
-
+    <div className="flex flex-col items-start">
       <div className="flex flex-col md:flex-row ">
-        <div className="space-y-4 mb-6 ">
+        <div className="space-y-4 mb-6">
           <p className="text-sm text-white leading-relaxed">
             5123 Market St. #22B Charlottesville, California 44635
           </p>
@@ -87,7 +87,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-start gap-30 border-red mt-10">
+        
+      </div>
+      <div className="flex flex-col md:flex-row items-start gap-6 md:gap-20 border-red mt-4">
           <div>
             <p className="space-y-2 text-white text-sm">(434) 546-4356</p>
             <p className="text-white text-sm">contact@lift.agencyr.com</p>
@@ -96,8 +98,7 @@ const Footer = () => {
             © 2020 Lift media. All rights reserved.
           </p>
         </div>
-      </div>
-    </div>
+    </div></div>
   );
 };
 

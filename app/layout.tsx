@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full overflow-x-hidden`}>
+        <body className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full overflow-x-hidden bg-gray-200`}>
           <header className=" w-full">
             <Navbar></Navbar>
           </header>

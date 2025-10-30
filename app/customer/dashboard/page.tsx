@@ -30,8 +30,8 @@ const Dashboard: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
-            <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+            <div className="md:min-w-7xl mx-auto">
                 {/* Stats Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                     <div className="bg-white rounded-lg shadow p-6">
