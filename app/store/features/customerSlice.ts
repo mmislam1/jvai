@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction ,createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface Activity {
   id: string;
@@ -20,6 +20,7 @@ interface CustomerState {
   email: string;
   phone: string;
   notifications: Notification[];
+  deliveryRequest: DeliveryRequestState;
 }
 
 interface Notification {
@@ -27,6 +28,23 @@ interface Notification {
   orderId: string;
   message: string;
   timestamp: number;
+}
+
+export interface DeliveryRequestFormData {
+  orderId: string;
+  companyName: string;
+  productDescription: string;
+  productWeight: string;
+  productAmount: string;
+  pickupLocation: string;
+  deliveryLocation: string;
+}
+
+interface DeliveryRequestState {
+  formData: DeliveryRequestFormData;
+  loading: boolean;
+  error: string | null;
+  success: boolean;
 }
 
 const initialState: CustomerState = {
@@ -120,24 +138,61 @@ const initialState: CustomerState = {
       timestamp: 1,
     },
   ],
+  deliveryRequest: {
+    formData: {
+      orderId: "",
+      companyName: "",
+      productDescription: "",
+      productWeight: "",
+      productAmount: "",
+      pickupLocation: "",
+      deliveryLocation: "",
+    },
+    loading: false,
+    error: null,
+    success: true,
+  },
 };
 
 export const fetchNotifications = createAsyncThunk(
-  'notifications/fetchNotifications',
+  "notifications/fetchNotifications",
   async (_, { rejectWithValue }) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
       const mockData: Notification[] = Array.from({ length: 7 }, (_, i) => ({
         id: `notif-${i + 1}`,
-        orderId: 'ID#12345',
-        message: 'Driver on the way',
-        timestamp: (Date.now() - (2 * 60 * 60 * 1000)),
+        orderId: "ID#12345",
+        message: "Driver on the way",
+        timestamp: Date.now() - 2 * 60 * 60 * 1000,
       }));
-      
+
       return mockData;
     } catch (error) {
-      return rejectWithValue('Failed to fetch notifications');
+      return rejectWithValue("Failed to fetch notifications");
+    }
+  }
+);
+
+export const submitDeliveryRequest = createAsyncThunk(
+  'delivery/submitRequest',
+  async (formData: DeliveryRequestFormData, { rejectWithValue }) => {
+    try {
+      const response = await fetch('/api/delivery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit delivery request');
+      }
+
+      return await response.json();
+    } catch (error) {
+      return rejectWithValue(
+        error instanceof Error ? error.message : 'An error occurred'
+      );
     }
   }
 );
@@ -159,10 +214,30 @@ export const customerSlice = createSlice({
       state.delivery.activities.unshift(action.payload);
     },
     deleteNotification: (state, action: PayloadAction<string>) => {
-      state.notifications = state.notifications.filter(n => n.id !== action.payload);
+      state.notifications = state.notifications.filter(
+        (n) => n.id !== action.payload
+      );
     },
     clearAllNotifications: (state) => {
       state.notifications = [];
+    },
+    updateDeliveryRequestFormField: (
+      state,
+      action: PayloadAction<{
+        field: keyof DeliveryRequestFormData;
+        value: string;
+      }>
+    ) => {
+      state.deliveryRequest.formData[action.payload.field] = action.payload.value;
+      state.deliveryRequest.error = null;
+    },
+    resetDeliveryRequestForm: (state) => {
+      state.deliveryRequest.formData = initialState.deliveryRequest.formData;
+      state.deliveryRequest.error = null;
+      state.deliveryRequest.success = false;
+    },
+    clearDeliveryRequestError: (state) => {
+      state.deliveryRequest.error = null;
     },
   },
 });
@@ -173,6 +248,9 @@ export const {
   updateCompletedOrders,
   addActivity,
   deleteNotification,
-  clearAllNotifications
+  clearAllNotifications,
+  updateDeliveryRequestFormField,
+  resetDeliveryRequestForm,
+  clearDeliveryRequestError,
 } = customerSlice.actions;
 export default customerSlice.reducer;
