@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar></Navbar>
           </header>
             {children}
-          <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center m-6">
+          <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center">
             <Footer />
           </footer>
 
