@@ -1,10 +1,20 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../api";
+
+interface Driver {
+    name: string;
+    vehicle: string;
+    rating: number;
+    avatar: string;
+    phone: string;
+  };
 
 interface Activity {
   id: string;
   orderId: string;
   status: string;
   timestamp: string;
+  driver: Driver;
 }
 
 interface DeliveryState {
@@ -58,36 +68,78 @@ const initialState: CustomerState = {
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
       {
         id: "2",
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
       {
         id: "3",
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
       {
         id: "4",
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
       {
         id: "5",
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
       {
         id: "6",
         orderId: "12345",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
       },
     ],
   },
@@ -175,23 +227,37 @@ export const fetchNotifications = createAsyncThunk(
 );
 
 export const submitDeliveryRequest = createAsyncThunk(
-  'delivery/submitRequest',
+  "delivery/submitRequest",
   async (formData: DeliveryRequestFormData, { rejectWithValue }) => {
     try {
-      const response = await fetch('/api/delivery', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/delivery", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit delivery request');
+        throw new Error("Failed to submit delivery request");
       }
 
       return await response.json();
     } catch (error) {
       return rejectWithValue(
-        error instanceof Error ? error.message : 'An error occurred'
+        error instanceof Error ? error.message : "An error occurred"
+      );
+    }
+  }
+);
+
+export const cancelDelivery = createAsyncThunk(
+  "delivery/cancelDelivery",
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const response = await api.delete(`/delivery/cancel_request/${id}`);
+      return response.data.id;
+    } catch (error) {
+      return rejectWithValue(
+        error instanceof Error ? error.message : "An error occurred"
       );
     }
   }
@@ -228,7 +294,8 @@ export const customerSlice = createSlice({
         value: string;
       }>
     ) => {
-      state.deliveryRequest.formData[action.payload.field] = action.payload.value;
+      state.deliveryRequest.formData[action.payload.field] =
+        action.payload.value;
       state.deliveryRequest.error = null;
     },
     resetDeliveryRequestForm: (state) => {

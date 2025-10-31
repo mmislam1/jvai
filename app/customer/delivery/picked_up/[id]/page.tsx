@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks';
-import { cancelOrder } from '@/lib/redux/orderSlice';
+import { useAppSelector, useAppDispatch } from '../../../../store/hooks';
+import { cancelDelivery } from '../../../../store/features/customerSlice';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, MapPin, Phone, MessageCircle, Plus, Eye } from 'lucide-react';
@@ -18,7 +18,8 @@ export default function OrderTrackingPage({ params }: OrderTrackingPageProps) {
     const [showCancelConfirm, setShowCancelConfirm] = useState(false);
 
     // Mock data - replace with Redux selector
-    const order = useAppSelector((state) => state.orders.currentOrder) || {
+    const orders=useAppSelector((state) => state.customer.delivery.activities)
+    const order =  orders.find((order)=>params.id===order.id)|| {
         id: '#12345',
         status: 'picked_up',
         driver: {
@@ -32,6 +33,7 @@ export default function OrderTrackingPage({ params }: OrderTrackingPageProps) {
             current: { lat: 40.7128, lng: -74.006 },
             destination: { lat: 40.758, lng: -73.9855 },
         },
+        timestamp:''
     };
 
     const statusSteps = [
@@ -42,12 +44,12 @@ export default function OrderTrackingPage({ params }: OrderTrackingPageProps) {
     ];
 
     const handleCancelOrder = async () => {
-        dispatch(cancelOrder(order.id));
+        dispatch(cancelDelivery('nsjdcs'));
         setShowCancelConfirm(false);
     };
 
     const isCompleted = (step: string) => {
-        const currentIndex = statusSteps.findIndex((s) => s.key === order.status);
+        const currentIndex = statusSteps.findIndex((s) => s.key === order.id);
         const stepIndex = statusSteps.findIndex((s) => s.key === step);
         return stepIndex <= currentIndex;
     };
