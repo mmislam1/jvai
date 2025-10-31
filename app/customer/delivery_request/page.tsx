@@ -9,8 +9,10 @@ import {
     submitDeliveryRequest,
 } from '../../store/features/customerSlice';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function DeliveryRequestPage() {
+    const router=useRouter()
     const dispatch = useAppDispatch();
     const { formData, loading, error, success } = useAppSelector(
         (state) => state.customer.deliveryRequest
@@ -26,14 +28,7 @@ export default function DeliveryRequestPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (!formData.orderId || !formData.companyName || !formData.pickupLocation || !formData.deliveryLocation) {
-            alert('Please fill in all required fields');
-            return;
-        }
-
-        await dispatch(submitDeliveryRequest(formData));
-        setSubmitted(true);
+        router.push('/customer/confirm_delivery')
     };
 
     const handleReset = () => {
@@ -66,7 +61,7 @@ export default function DeliveryRequestPage() {
                     </Link>
                 <div className="w-full mb-8 flex items-center justify-center gap-4">
                     
-                    <h1 className="text-3xl font-bold text-amber-600 sm:text-4xl">
+                    <h1 className="text-3xl font-bold text-yellow-400 sm:text-4xl">
                         Delivery Request
                     </h1>
                 </div>
@@ -235,7 +230,7 @@ export default function DeliveryRequestPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-4 font-semibold text-white shadow-lg transition-all hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed active:scale-95"
+                            className="w-full rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-500 px-6 py-4 font-semibold text-white shadow-lg transition-all hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed active:scale-95"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
