@@ -72,7 +72,7 @@ const initialState: CustomerState = {
             name: 'Abdur Rahim',
             vehicle: 'Toyota',
             rating: 4.9,
-            avatar: '/driver-avatar.jpg',
+            avatar: '/Ellipse 7.png',
             phone: '+880123456789',
         },
       },
