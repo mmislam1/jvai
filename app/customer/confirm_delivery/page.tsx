@@ -27,31 +27,31 @@ export default function DeliveryPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="min-h-screen bg-gray-50 flex w-full max-w-2xl md: max-w-7xl p-2 md: w-7xl flex-col">
             {/* Header */}
-            <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-                <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-                    <button className="text-gray-600 hover:text-gray-900">
+            <div className="w-full bg-white border-b border-gray-200 sticky top-0 z-10">
+                <div className=" w-full mx-auto px-4 py-4 flex items-center justify-between">
+                    <button className="w-full text-gray-600 hover:text-gray-900">
                         <ChevronLeft size={24} />
                     </button>
-                    <h1 className="text-lg font-semibold text-gray-900">
+                    <h1 className="w-full text-lg font-semibold text-gray-900">
                         Request a Delivery <span className="text-amber-500">#12345</span>
                     </h1>
                     <button
                         onClick={handleCancel}
-                        className="text-gray-600 hover:text-gray-900 font-medium"
+                        className="w-full text-gray-600 hover:text-gray-900 font-medium"
                     >
                         {stage === 'confirm' ? (
                             <X size={24} />
                         ) : (
-                            <span className="text-sm">Cancel Request</span>
+                                <span className="w-full text-sm">Cancel Request</span>
                         )}
                     </button>
                 </div>
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col items-center justify-start max-w-2xl mx-auto w-full px-4 py-8">
+            <div className="w-full flex-1 flex flex-col items-center justify-start max-w-2xl mx-auto w-full px-4 py-8">
                 {/* Stage 1: Confirm Price */}
                 
                     <div className="w-full flex flex-col items-center">
@@ -69,7 +69,7 @@ export default function DeliveryPage() {
 
                 {/* Stage 2: Finding Driver */}
                 {(stage === 'finding' || stage === 'driver') && (
-                    <div className="w-full flex flex-col items-center">
+                    <div className="w-full flex flex-col items-center mt-4">
                         <div className="w-24 h-24 rounded-full border-4 border-gray-300 flex items-center justify-center mb-6 animate-pulse">
                             <MapPin size={40} className="text-amber-500" />
                         </div>
