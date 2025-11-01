@@ -85,7 +85,7 @@ export default function OrderTrackingPage() {
 
     return (
         <div className="min-h-screen  w-full md:w-7xl">
-            {/* Header */}
+            {/* Header 
             <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
                     <Link
@@ -102,9 +102,9 @@ export default function OrderTrackingPage() {
                         Cancel Request
                     </button>
                 </div>
-            </header>
+            </header>*/}
 
-            <main className="max-w-4xl mx-auto px-4 py-8">
+            <main className="max-w-4xl mx-auto px-4 py-8 ">
                 {/* Order Title */}
                 <div className="text-center mb-8">
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -112,7 +112,7 @@ export default function OrderTrackingPage() {
                         <span className="text-yellow-500">ID: {order.id}</span>
                     </h1>
                 </div>
-                <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-xl">
+                <div className="flex flex-col items-center justify-center bg-white  rounded-xl shadow-xl">
                     {/* Map Section */}
                     <div className="relative w-full h-64 md:h-80 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl overflow-hidden shadow-lg ">
                         <div className="absolute inset-0 flex items-center justify-center">
@@ -180,7 +180,7 @@ export default function OrderTrackingPage() {
                     <div className=" w-full flex flex-col rounded-2xl p-6 md:p-8 border-t border-gray-100 mb-6 md:mb-10">
                         <div className="w-full flex flex-col md:items-center md:justify-between gap-6">
                             {/* Driver Info */}
-                            <div className="w-full flex flex-col items-center justify-center gap-4">
+                            <div className="w-full flex flex-col items-center justify-center ">
                                 <div className="flex flex-col items-center justify-center relative w-[130px] h-[130px] md:w-[200px] md:h-[200px]">
                                     <Image
                                         src={order.driver.avatar}
@@ -189,11 +189,11 @@ export default function OrderTrackingPage() {
                                         className="rounded-full object-cover"
                                     />
                                 </div>
-                                <div>
+                                <div className="flex flex-row gap-2 items-center justify-center">
                                     <h3 className="text-lg md:text-xl font-semibold text-gray-900">
                                         {order.driver.name}
                                     </h3>
-                                    <div className="flex flex-col items-center justify-center gap-1 mt-1">
+                                    <div className="flex flex-row gap-2 items-center justify-center gap-1 mt-1">
                                         <span className="text-sm text-gray-600">
                                             {order.driver.vehicle}
                                         </span>
