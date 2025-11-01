@@ -69,24 +69,9 @@ export default function TrackOrderPage({ params }: { params: { orderId: string }
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            {/* Header */}
-            <div className=" sticky top-0 z-10">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => router.back()}
-                            className="p-2 hover:bg-gray-100 rounded-lg transition"
-                            aria-label="Go back"
-                        >
-                            <ArrowLeft className="w-6 h-6 text-gray-700" />
-                        </button>
-                        <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">Track Order</h1>
-                    </div>
-                </div>
-            </div>
 
-            {/* Main Content */}
+
+        <div className="flex">{/* Main Content */}
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 {/* Completion Status */}
                 <div className="text-center mb-8">
@@ -169,7 +154,7 @@ export default function TrackOrderPage({ params }: { params: { orderId: string }
                                 />
                             </div>
 
-                            
+
 
                             {/* Driver Details */}
                             <div className="text-center sm:text-left">
@@ -227,8 +212,8 @@ export default function TrackOrderPage({ params }: { params: { orderId: string }
                                     >
                                         <Star
                                             className={`w-8 h-8 ${i < rating
-                                                    ? 'fill-yellow-400 text-yellow-400'
-                                                    : 'text-gray-300'
+                                                ? 'fill-yellow-400 text-yellow-400'
+                                                : 'text-gray-300'
                                                 } cursor-pointer`}
                                         />
                                     </button>

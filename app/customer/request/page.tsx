@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAppDispatch,useAppSelector } from '../../../store/hooks';
+import { useAppDispatch,useAppSelector } from '../../store/hooks';
 import {
     updateDeliveryRequestFormField,
     resetDeliveryRequestForm,
     submitDeliveryRequest,
-} from '../../../store/features/customerSlice';
+} from '../../store/features/customerSlice';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
