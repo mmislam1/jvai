@@ -22,6 +22,7 @@ interface DeliveryState {
   pendingOrders: number;
   completedOrders: number;
   activities: Activity[];
+  history:Activity[] ;
 }
 
 interface CustomerState {
@@ -142,6 +143,84 @@ const initialState: CustomerState = {
         },
       },
     ],
+  history:[{
+        id: "1",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/Ellipse 7.png',
+            phone: '+880123456789',
+        },
+      },
+      {
+        id: "2",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
+      },
+      {
+        id: "3",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
+      },
+      {
+        id: "4",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
+      },
+      {
+        id: "5",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
+      },
+      {
+        id: "6",
+        orderId: "12345",
+        status: "Delivered Successfully",
+        timestamp: "2 hors ago",
+        driver: {
+            name: 'Abdur Rahim',
+            vehicle: 'Toyota',
+            rating: 4.9,
+            avatar: '/driver-avatar.jpg',
+            phone: '+880123456789',
+        },
+      },],
   },
   name: "",
   email: "",

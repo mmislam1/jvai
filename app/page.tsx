@@ -9,8 +9,11 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { FaStar, FaRegStar } from "react-icons/fa"
 import Icon from "@/components/icon";
+import { useDeviceType } from "./hooks/useDeviceType";
 
 export default function Home() {
+
+  const isMobile=useDeviceType()
   interface UserSay {
     rating: number;
     location: string;
@@ -48,10 +51,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full font-sans grid grid-rows-[100px_1fr_130px] min-h-screen ">
+    <div className="w-full bg-white font-sans flex flex-col min-h-screen pb-8">
       
-      <main className="flex flex-col row-start-2 items-center justify-start self-start">
-        <div className="flex flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] md:px-[150px] pt-[32px] pb-[50px]">
+      <main className="w-full flex flex-col items-center justify-start self-start ">
+        <div className="flex flex-col md:flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] md:px-[150px] pt-[32px] pb-[50px]">
           <div className="pt-10 md:pr-20">
             <p className="title1 text-white">Simplify Your Parts Delivery </p>
             <p className="title1 text-[#C59325]">-Track, Manage, Deliver</p>
@@ -64,7 +67,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="">
+          {!isMobile && (<div className="">
             <RoundedImage
               src="/driver2.png"
               curvature={80}
@@ -72,16 +75,16 @@ export default function Home() {
               height={542}
               width={385}
             />
-          </div>
+          </div>)}
         </div>
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex w-full flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center">
             <div className="flex gap-4 m-10">
               <p className="title1 text-black">How it </p>
               <p className="title1 text-[#ddaa33]">Works</p>
             </div>
-            <p className="text1 px-70">
+            <p className="text1 px-4 md:px-70">
               Order your truck parts, request a delivery, and get them at your
               doorstep - fast, reliable, and hassle-free
             </p>
@@ -316,7 +319,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-8 items-center justify-center w-[full]">
+        <div className="flex flex-col md:flex-row gap-8 items-center justify-center w-[full]">
           {userSay.map((card,ii) => {
             return (
               <div key={ii} className="flex items-center justify-center p-4 py-6 bg-white shadow-2xl rounded-xl w-[360px] h-[415px]">
