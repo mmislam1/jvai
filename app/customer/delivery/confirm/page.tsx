@@ -29,8 +29,8 @@ export default function DeliveryPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex w-full max-w-2xl md: max-w-7xl p-2 md: w-7xl flex-col">
-            {/* Header */}
+        <div className="min-h-screen flex w-full max-w-2xl md: max-w-7xl p-2 md: w-7xl flex-col">
+            {/* Header 
             <div className="w-full bg-white shadow-lg border-gray-200 sticky top-0 z-10">
                 <div className=" w-full mx-auto px-4 py-4 flex items-center justify-between">
                     <button className="w-full text-gray-600 hover:text-gray-900">
@@ -50,7 +50,7 @@ export default function DeliveryPage() {
                         )}
                     </button>
                 </div>
-            </div>
+            </div>*/}
 
             {/* Main Content */}
             <div className="w-full flex-1 flex flex-col items-center justify-start max-w-2xl mx-auto w-full px-4 py-8">
@@ -70,8 +70,8 @@ export default function DeliveryPage() {
                 
 
                 {/* Stage 2: Finding Driver */}
-                {(stage === 'finding' || stage === 'driver') && (<div className="flex flex-col w-full gap-6 items-center justify-center py-6"><div className="flex justify-center items-center">
-                    <Image src={'/arrow_down.png'} alt={'dh'} height={100} width={60}></Image>
+                {(stage === 'finding' || stage === 'driver') && (<div className="flex flex-col w-full gap-4 items-center justify-center py-6"><div className="flex justify-center items-center">
+                    <Image src={'/arrow_down.png'} alt={'dh'} height={50} width={30}></Image>
                 </div>
                     <div className="w-full flex flex-col items-center mt-4 bg-white rounded-lg shadow-lg p-10">
                         <div className="w-24 h-24 rounded-full border-4 border-gray-300 flex items-center justify-center mb-6 animate-pulse">
@@ -85,8 +85,8 @@ export default function DeliveryPage() {
                 </div>)}
 
                 {/* Stage 3: Driver Assigned */}
-                {stage === 'driver' && (<div className="flex flex-col w-full gap-6 items-center justify-center py-6"><div className="flex justify-center items-center">
-                    <Image src={'/arrow_down.png'} alt={'dh'} height={100} width={60}></Image>
+                {stage === 'driver' && (<div className="flex flex-col w-full gap-6 items-center justify-center py-4"><div className="flex justify-center items-center">
+                    <Image src={'/arrow_down.png'} alt={'dh'} height={50} width={30}></Image>
                 </div>
                     <div className="w-full flex flex-col items-center space-y-8">
                         

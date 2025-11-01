@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAppDispatch,useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
     updateDeliveryRequestFormField,
     resetDeliveryRequestForm,
@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function DeliveryRequestPage() {
-    const router=useRouter()
+    const router = useRouter()
     const dispatch = useAppDispatch();
     const { formData, loading, error, success } = useAppSelector(
         (state) => state.customer.deliveryRequest
@@ -41,26 +41,26 @@ export default function DeliveryRequestPage() {
             <div className="flex flex-col items-center justify-center w-full">
                 {/* Header */}
                 <Link
-                        href="/"
-                        className="flex mr-auto h-10 w-10 items-center justify-center rounded-lg bg-white text-gray-600 shadow-md transition-all hover:shadow-lg active:scale-95"
-                        aria-label="Go back"
+                    href="/"
+                    className="flex mr-auto h-10 w-10 items-center justify-center rounded-lg bg-white text-gray-600 shadow-md transition-all hover:shadow-lg active:scale-95"
+                    aria-label="Go back"
+                >
+                    <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                     >
-                        <svg
-                            className="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 19l-7-7 7-7"
-                            />
-                        </svg>
-                    </Link>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 19l-7-7 7-7"
+                        />
+                    </svg>
+                </Link>
                 <div className="w-full mb-8 flex items-center justify-center gap-4">
-                    
+
                     <h1 className="text-3xl font-bold text-yellow-400 sm:text-4xl">
                         Delivery Request
                     </h1>
@@ -94,135 +94,139 @@ export default function DeliveryRequestPage() {
 
                 {/* Form */}
                 {!success || !submitted ? (
-                    <form onSubmit={handleSubmit} className="w-full space-y-6 rounded-xl bg-white p-6 shadow-lg sm:p-8">
+                    <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
                         {/* Order ID */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Order ID
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">📋</span>
-                                <input
-                                    type="text"
-                                    name="orderId"
-                                    value={formData.orderId}
-                                    onChange={handleInputChange}
-                                    placeholder="eg: #12345"
-                                    required
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
-                            </div>
-                        </div>
 
-                        {/* Company Name */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Company Name
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">🏢</span>
-                                <input
-                                    type="text"
-                                    name="companyName"
-                                    value={formData.companyName}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter company name"
-                                    required
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
-                            </div>
-                        </div>
 
-                        {/* Product Description */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Product Short Description{' '}
-                                <span className="text-gray-400 font-normal">(Optional)</span>
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">📝</span>
-                                <textarea
-                                    name="productDescription"
-                                    value={formData.productDescription}
-                                    onChange={handleInputChange}
-                                    placeholder="Write product description"
-                                    rows={3}
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
+                        <div className="w-full space-y-6 rounded-xl bg-white p-6 shadow-lg sm:p-8">
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Order ID
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">📋</span>
+                                    <input
+                                        type="text"
+                                        name="orderId"
+                                        value={formData.orderId}
+                                        onChange={handleInputChange}
+                                        placeholder="eg: #12345"
+                                        required
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Product Weight */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Product Weight <span className="text-gray-400 font-normal">(Optional)</span>
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">⚖️</span>
-                                <input
-                                    type="text"
-                                    name="productWeight"
-                                    value={formData.productWeight}
-                                    onChange={handleInputChange}
-                                    placeholder="Write here"
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
+                            {/* Company Name */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Company Name
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">🏢</span>
+                                    <input
+                                        type="text"
+                                        name="companyName"
+                                        value={formData.companyName}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter company name"
+                                        required
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Product Amount */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Product Amount <span className="text-gray-400 font-normal">(Optional)</span>
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">💰</span>
-                                <input
-                                    type="text"
-                                    name="productAmount"
-                                    value={formData.productAmount}
-                                    onChange={handleInputChange}
-                                    placeholder="Write the amount"
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
+                            {/* Product Description */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Product Short Description{' '}
+                                    <span className="text-gray-400 font-normal">(Optional)</span>
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">📝</span>
+                                    <textarea
+                                        name="productDescription"
+                                        value={formData.productDescription}
+                                        onChange={handleInputChange}
+                                        placeholder="Write product description"
+                                        rows={3}
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Pickup Location */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Pickup Location
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">📍</span>
-                                <input
-                                    type="text"
-                                    name="pickupLocation"
-                                    value={formData.pickupLocation}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter pickup address"
-                                    required
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
+                            {/* Product Weight */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Product Weight <span className="text-gray-400 font-normal">(Optional)</span>
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">⚖️</span>
+                                    <input
+                                        type="text"
+                                        name="productWeight"
+                                        value={formData.productWeight}
+                                        onChange={handleInputChange}
+                                        placeholder="Write here"
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Delivery Location */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                Delivery Location
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-3 text-gray-400">🏠</span>
-                                <input
-                                    type="text"
-                                    name="deliveryLocation"
-                                    value={formData.deliveryLocation}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter delivery address"
-                                    required
-                                    className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
-                                />
+                            {/* Product Amount */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Product Amount <span className="text-gray-400 font-normal">(Optional)</span>
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">💰</span>
+                                    <input
+                                        type="text"
+                                        name="productAmount"
+                                        value={formData.productAmount}
+                                        onChange={handleInputChange}
+                                        placeholder="Write the amount"
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Pickup Location */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Pickup Location
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">📍</span>
+                                    <input
+                                        type="text"
+                                        name="pickupLocation"
+                                        value={formData.pickupLocation}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter pickup address"
+                                        required
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Delivery Location */}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Delivery Location
+                                </label>
+                                <div className="relative">
+                                    <span className="absolute left-3 top-3 text-gray-400">🏠</span>
+                                    <input
+                                        type="text"
+                                        name="deliveryLocation"
+                                        value={formData.deliveryLocation}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter delivery address"
+                                        required
+                                        className="w-full rounded-lg border border-gray-300 bg-amber-50 px-4 py-3 pl-10 text-gray-800 placeholder-gray-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                                    />
+                                </div>
                             </div>
                         </div>
 
