@@ -32,6 +32,7 @@ interface CustomerState {
   phone: string;
   notifications: Notification[];
   deliveryRequest: DeliveryRequestState;
+  historyView:string|undefined|null;
 }
 
 interface Notification {
@@ -66,7 +67,7 @@ const initialState: CustomerState = {
     activities: [
       {
         id: "1",
-        orderId: "12345",
+        orderId: "0",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -79,7 +80,7 @@ const initialState: CustomerState = {
       },
       {
         id: "2",
-        orderId: "12345",
+        orderId: "1",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -92,7 +93,7 @@ const initialState: CustomerState = {
       },
       {
         id: "3",
-        orderId: "12345",
+        orderId: "2",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -105,7 +106,7 @@ const initialState: CustomerState = {
       },
       {
         id: "4",
-        orderId: "12345",
+        orderId: "3",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -118,7 +119,7 @@ const initialState: CustomerState = {
       },
       {
         id: "5",
-        orderId: "12345",
+        orderId: "4",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -131,7 +132,7 @@ const initialState: CustomerState = {
       },
       {
         id: "6",
-        orderId: "12345",
+        orderId: "5",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -145,7 +146,7 @@ const initialState: CustomerState = {
     ],
   history:[{
         id: "1",
-        orderId: "12345",
+        orderId: "0",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -158,7 +159,7 @@ const initialState: CustomerState = {
       },
       {
         id: "2",
-        orderId: "12345",
+        orderId: "1",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -171,7 +172,7 @@ const initialState: CustomerState = {
       },
       {
         id: "3",
-        orderId: "12345",
+        orderId: "2",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -184,7 +185,7 @@ const initialState: CustomerState = {
       },
       {
         id: "4",
-        orderId: "12345",
+        orderId: "3",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -197,7 +198,7 @@ const initialState: CustomerState = {
       },
       {
         id: "5",
-        orderId: "12345",
+        orderId: "4",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -210,7 +211,7 @@ const initialState: CustomerState = {
       },
       {
         id: "6",
-        orderId: "12345",
+        orderId: "5",
         status: "Delivered Successfully",
         timestamp: "2 hors ago",
         driver: {
@@ -283,6 +284,7 @@ const initialState: CustomerState = {
     error: null,
     success: true,
   },
+  historyView: 'ongoing',
 };
 
 export const fetchNotifications = createAsyncThunk(
@@ -385,6 +387,9 @@ export const customerSlice = createSlice({
     clearDeliveryRequestError: (state) => {
       state.deliveryRequest.error = null;
     },
+    updateHistoryView:(state,action:PayloadAction<string>)=>{
+      state.historyView=action.payload
+    }
   },
 });
 
@@ -398,5 +403,6 @@ export const {
   updateDeliveryRequestFormField,
   resetDeliveryRequestForm,
   clearDeliveryRequestError,
+  updateHistoryView,
 } = customerSlice.actions;
 export default customerSlice.reducer;
