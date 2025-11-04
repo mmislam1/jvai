@@ -68,7 +68,7 @@ export default function Layout({ children }: LayoutProps) {
                                     }}
                                     customInput={
                                         <button
-                                            className={`mt-1 flex flex-row items-center justify-around gap-2 px-2 rounded-md bg-white p-[.5px] ${view !== "ongoing" && view !== "delivered"
+                                            className={`mt-1 flex flex-row items-center font-semibold justify-around gap-2 px-2 rounded-md bg-white p-[.5px] ${view !== "ongoing" && view !== "delivered"
                                                     ? "border border-yellow-500 bg-yellow-500 text-white"
                                                     : "border border-gray-400 bg-white"
                                                 } `}
@@ -86,7 +86,7 @@ export default function Layout({ children }: LayoutProps) {
                                 />
 
                                 <button
-                                    className={`px-2 rounded-md  ${view === "ongoing"
+                                        className={`px-2 font-semibold rounded-md  ${view === "ongoing"
                                             ? "border border-yellow-500 bg-yellow-500 text-white"
                                             : "border border-gray-400 bg-white"
                                         }`}
@@ -95,7 +95,7 @@ export default function Layout({ children }: LayoutProps) {
                                     Ongoing
                                 </button>
                                 <button
-                                    className={`px-2 rounded-md bg-white ${view === "delivered"
+                                        className={`px-2 font-semibold rounded-md bg-white ${view === "delivered"
                                             ? "border border-yellow-500 bg-yellow-500 text-white"
                                             : "border border-gray-400 bg-white"
                                         }`}

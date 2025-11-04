@@ -63,9 +63,12 @@ export default function DeliveryOrdersPage() {
             {orders.map((order) => {
                 return (
                     <div key={order.id} className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg">
-                        <div className="flex flex-row items-center justify-around w-[75%] md:w-[35%]">
+                        <div className="flex flex-row items-center justify-center gap-6 ">
                             <p className="text-md text-black">ID: {order.orderId}</p>
+                            <p className="text-md text-black">{order.timestamp}</p>
+                            <p className="text-md text-black">-</p>
                             <p className="text-md text-yellow-700">{order.status}</p>
+
                         </div>
 
                         <button className="shadow-sm rounded-lg">
