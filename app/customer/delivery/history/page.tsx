@@ -16,10 +16,8 @@ interface OrderItem {
 export default function DeliveryOrdersPage() {
     const dispatch = useDispatch<AppDispatch>();
     const { delivery } = useSelector((state: RootState) => state.customer);
-    const view = useSelector((state: RootState) => state.customer.historyView)
+    const view = useSelector((state: RootState) => state.customer.historyView);
     const [isLoading, setIsLoading] = useState(true);
-
-   
 
     useEffect(() => {
         // Simulate data fetch or dispatch actions if needed
@@ -61,17 +59,77 @@ export default function DeliveryOrdersPage() {
         timestamp: activity.timestamp,
     }));
 
-    return (
-        <div className="flex flex-col gap-2 w-4xl p-4 items-center justify-center bg-white shadow-lg rounded-xl">
-            {orders.map((order) => {
-                return (
-                    <div key={order.id} className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg">
+    function isISODateString(value: string): boolean {
+        // Regex to roughly match ISO 8601 datetime strings
+        const isoRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
+
+        if (!isoRegex.test(value)) return false;
+
+        // Further check: Date.parse should produce a valid date number
+        const timestamp = Date.parse(value);
+        return !isNaN(timestamp);
+    }
+
+    let content: React.ReactNode[] =[];
+    orders.map((order) => {
+        if (view === "delivered" && order.status === "delivered") {
+            content.push(
+                <div
+                    key={order.id}
+                    className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
+                >
+                    <div className="flex flex-row items-center justify-center gap-6 ">
+                        <p className="text-md text-black">ID: {order.orderId}</p>
+
+                        <p className="text-md text-black">{order.timestamp}</p>
+                        
+                    </div>
+
+                    <button className="shadow-sm rounded-lg">
+                        <div className="m-auto p-2 bg-white rounded-lg ">
+                            <ChevronRight></ChevronRight>
+                        </div>
+                    </button>
+                </div>
+            );
+        } 
+        if (
+            isISODateString(view) &&
+            new Date(order.timestamp).toISOString() === new Date(view).toISOString()
+        ) {
+            content.push(
+                <div
+                    key={order.id}
+                    className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
+                >
+                    <div className="flex flex-row items-center justify-center gap-6 ">
+                        <p className="text-md text-black">ID: {order.orderId}</p>
+
+                        <p className="text-md text-black">{new Date(order.timestamp).toISOString()}</p>
+                        <p className="text-md text-black">-</p>
+                        <p className="text-md text-yellow-700">{order.status}</p>
+                    </div>
+
+                    <button className="shadow-sm rounded-lg">
+                        <div className="m-auto p-2 bg-white rounded-lg ">
+                            <ChevronRight></ChevronRight>
+                        </div>
+                    </button>
+                </div>
+            );
+        }
+
+
+        if (!isISODateString(view) && view !== "delivered" && order.status!=='delivered'){content.push(
+                    <div
+                        key={order.id}
+                        className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
+                    >
                         <div className="flex flex-row items-center justify-center gap-6 ">
                             <p className="text-md text-black">ID: {order.orderId}</p>
-                            <p className="text-md text-black">{order.timestamp}</p>
-                            <p className="text-md text-black">-</p>
-                            <p className="text-md text-yellow-700">{order.status}</p>
 
+                            
+                            <p className="text-md text-yellow-700">{order.status}</p>
                         </div>
 
                         <button className="shadow-sm rounded-lg">
@@ -80,8 +138,17 @@ export default function DeliveryOrdersPage() {
                             </div>
                         </button>
                     </div>
-                );
-            })}
+                );}
+               
+        
+        
+    });
+
+    return (
+        <div className="flex flex-col gap-2 w-4xl p-4 items-center justify-center bg-white shadow-lg rounded-xl">
+            {content.length > 0 ? content : (
+                <p className="text-gray-500 text-center py-4">No orders found.</p>
+            )}
         </div>
     );
 }
