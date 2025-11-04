@@ -16,7 +16,10 @@ interface OrderItem {
 export default function DeliveryOrdersPage() {
     const dispatch = useDispatch<AppDispatch>();
     const { delivery } = useSelector((state: RootState) => state.customer);
+    const view = useSelector((state: RootState) => state.customer.historyView)
     const [isLoading, setIsLoading] = useState(true);
+
+   
 
     useEffect(() => {
         // Simulate data fetch or dispatch actions if needed

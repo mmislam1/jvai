@@ -16,7 +16,7 @@ interface OrderStep {
     completed: boolean;
 }
 
-export default function TrackOrderPage({ params }: { params: { orderId: string } }) {
+export default function TrackOrderPage( params : { params: { orderId: string } }) {
     const router = useRouter();
     const [rating, setRating] = useState(0);
     const [rateNowClicked, setRateNowClicked] = useState(false);

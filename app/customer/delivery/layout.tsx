@@ -72,7 +72,7 @@ export default function Layout({ children }: LayoutProps) {
                                                     ? "border border-yellow-500 bg-yellow-500 text-white"
                                                     : "border border-gray-400 bg-white"
                                                 } `}
-                                            onClick={() => dispatch(updateHistoryView(""))}
+                                            
                                         >
                                             <Calendar1Icon />
                                             {selectedDate?<p>

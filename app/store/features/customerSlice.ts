@@ -2,12 +2,12 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../api";
 
 interface Driver {
-    name: string;
-    vehicle: string;
-    rating: number;
-    avatar: string;
-    phone: string;
-  };
+  name: string;
+  vehicle: string;
+  rating: number;
+  avatar: string;
+  phone: string;
+}
 
 interface Activity {
   id: string;
@@ -22,7 +22,7 @@ interface DeliveryState {
   pendingOrders: number;
   completedOrders: number;
   activities: Activity[];
-  history:Activity[] ;
+  history: Activity[];
 }
 
 interface CustomerState {
@@ -32,7 +32,7 @@ interface CustomerState {
   phone: string;
   notifications: Notification[];
   deliveryRequest: DeliveryRequestState;
-  historyView:string|undefined|null;
+  historyView: "delivered" | "ongoing" | string;
 }
 
 interface Notification {
@@ -68,160 +68,162 @@ const initialState: CustomerState = {
       {
         id: "1",
         orderId: "0",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/Ellipse 7.png',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/Ellipse 7.png",
+          phone: "+880123456789",
         },
       },
       {
         id: "2",
         orderId: "1",
         status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "3",
         orderId: "2",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "4",
         orderId: "3",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "5",
         orderId: "4",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "pending",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "6",
         orderId: "5",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
     ],
-  history:[{
+    history: [
+      {
         id: "1",
         orderId: "0",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/Ellipse 7.png',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/Ellipse 7.png",
+          phone: "+880123456789",
         },
       },
       {
         id: "2",
         orderId: "1",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "3",
         orderId: "2",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "4",
         orderId: "3",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "pending",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "5",
         orderId: "4",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
       },
       {
         id: "6",
         orderId: "5",
-        status: "Delivered Successfully",
-        timestamp: "2 hors ago",
+        status: "delivered",
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         driver: {
-            name: 'Abdur Rahim',
-            vehicle: 'Toyota',
-            rating: 4.9,
-            avatar: '/driver-avatar.jpg',
-            phone: '+880123456789',
+          name: "Abdur Rahim",
+          vehicle: "Toyota",
+          rating: 4.9,
+          avatar: "/driver-avatar.jpg",
+          phone: "+880123456789",
         },
-      },],
+      },
+    ],
   },
   name: "",
   email: "",
@@ -284,8 +286,13 @@ const initialState: CustomerState = {
     error: null,
     success: true,
   },
-  historyView: 'ongoing',
+  historyView: "ongoing",
 };
+
+function isISODateString(value: string): boolean {
+  // Simple check for ISO date format
+  return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/.test(value);
+}
 
 export const fetchNotifications = createAsyncThunk(
   "notifications/fetchNotifications",
@@ -387,9 +394,9 @@ export const customerSlice = createSlice({
     clearDeliveryRequestError: (state) => {
       state.deliveryRequest.error = null;
     },
-    updateHistoryView:(state,action:PayloadAction<string>)=>{
-      state.historyView=action.payload
-    }
+    updateHistoryView: (state, action: PayloadAction<string>) => {
+      state.historyView = action.payload;
+    },
   },
 });
 
