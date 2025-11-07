@@ -20,6 +20,33 @@ export const ChatContainer: React.FC = () => {
         scrollToBottom();
     }, [messages]);
 
+
+
+   /* 
+    useEffect(() => {
+        socket.on("connect", () => {
+            console.log("🟢 Connected to server");
+        });
+
+        socket.on("message", (msg: string) => {
+            setChat((prev) => [...prev, msg]);
+        });
+
+        return () => {
+            socket.off("message");
+        };
+    }, []);
+
+    const sendMessage = () => {
+        if (message.trim()) {
+            socket.emit("message", message);
+            setChat((prev) => [...prev, message]); // show your own msg
+            setMessage("");
+        }
+    };
+    */
+
+
     const handleSendMessage = () => {
         if (!inputValue.trim()) return;
 
