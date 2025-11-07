@@ -26,7 +26,7 @@ const initialState: ChatState = {
       text: "Hi, are you on the way with my truck brake pads order?",
       timestamp: new Date(Date.now() - 5 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "You",
     },
     {
@@ -35,7 +35,7 @@ const initialState: ChatState = {
       text: "Hello! Yes, I picked up your order from the warehouse. I'll reach your location in about 25 minutes.",
       timestamp: new Date(Date.now() - 4.5 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "Sarah",
     },
     {
@@ -44,7 +44,7 @@ const initialState: ChatState = {
       text: "Great! Please handle carefully, these are heavy parts.",
       timestamp: new Date(Date.now() - 4 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "You",
     },
     {
@@ -53,7 +53,7 @@ const initialState: ChatState = {
       text: "Don't worry, I've secured the parts in the truck. Do you prefer delivery at the garage entrance or inside the workshop?",
       timestamp: new Date(Date.now() - 3.5 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "Sarah",
     },
     {
@@ -62,7 +62,7 @@ const initialState: ChatState = {
       text: "At the garage entrance is fine. I'll be waiting there.",
       timestamp: new Date(Date.now() - 3 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "You",
     },
     {
@@ -71,7 +71,7 @@ const initialState: ChatState = {
       text: "👍 I'll call you once I arrive",
       timestamp: new Date(Date.now() - 2.5 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "Sarah",
     },
     {
@@ -80,17 +80,17 @@ const initialState: ChatState = {
       text: "Thanks, see you soon!",
       timestamp: new Date(Date.now() - 2 * 60000),
       avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        "/driver.png",
       name: "You",
     },
   ],
   loading: false,
   agentName: "Sarah",
   agentAvatar:
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    "/driver.png",
   userName: "You",
   userAvatar:
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    "/driver.png",
 };
 
 const chatSlice = createSlice({

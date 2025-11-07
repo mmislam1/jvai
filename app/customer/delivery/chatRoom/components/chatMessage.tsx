@@ -17,7 +17,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser }) => 
 
     return (
         <div className={`flex gap-3 mb-4 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}>
-            <div className="flex-shrink-0">
+            <div className="flex flex-shrink-0 items-center justify-center">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden bg-gray-200">
                     <Image
                         src={message.avatar}
