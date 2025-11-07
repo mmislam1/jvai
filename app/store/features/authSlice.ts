@@ -5,6 +5,7 @@ interface User {
   name: string;
   email: string;
   image?: string;
+  phone?: string;
 }
 interface AuthState {
   user: User | null;
@@ -14,9 +15,9 @@ interface AuthState {
   error: string | null;
 }
 const initialState: AuthState = {
-  user: null,
-  accessToken: null,
-  refreshToken: null,
+  user: {id:'1',name:'mm',email:'mmislam272@gmail.com',image:''},
+  accessToken: "dfgdfgd",
+  refreshToken: "dfgdfgd",
   loading: false,
   error: null,
 };
@@ -31,7 +32,7 @@ export const loginUser = createAsyncThunk(
     });
     if (!res.ok) throw new Error("Login failed");
     return (await res.json()) as { user: User; accessToken: string; refreshToken: string };*/
-    return {user:{id:'1',name:'mm',email:'mmislam272@gmail.com',image:''},accessToken: "", refreshToken: ''}
+    return {user:{id:'1',name:'mm',email:'mmislam272@gmail.com',image:''},accessToken: "dfgdfgd", refreshToken: ''}
   }
 );
 
