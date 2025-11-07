@@ -28,7 +28,7 @@ export default function DeliveryRequestPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        router.push('/customer/confirm_delivery')
+        router.push('/customer/delivery/confirm')
     };
 
     const handleReset = () => {

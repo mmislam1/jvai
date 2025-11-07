@@ -39,7 +39,7 @@ export default function Layout({ children }: LayoutProps) {
             <header className="top-0 z-40 border-b border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
                     <Link
-                        href="/orders"
+                        href="/customer/delivery/track_order"
                         className="flex items-center text-gray-600 hover:text-gray-900"
                     >
                         <ChevronLeft className="w-6 h-6" />
