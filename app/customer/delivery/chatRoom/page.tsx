@@ -44,7 +44,7 @@ export const ChatContainer: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen bg-white">
+        <div className="md:w-4xl flex flex-col h-screen bg-white rounded-lg">
             {/* Messages Container */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
                 {messages.map((message) => (
