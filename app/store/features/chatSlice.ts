@@ -4,7 +4,7 @@ export interface Message {
   id: string;
   sender: "user" | "agent";
   text: string;
-  timestamp: Date;
+  timestamp: string;
   avatar: string;
   name: string;
 }
@@ -24,7 +24,7 @@ const initialState: ChatState = {
       id: "1",
       sender: "user",
       text: "Hi, are you on the way with my truck brake pads order?",
-      timestamp: new Date(Date.now() - 5 * 60000),
+      timestamp: new Date(Date.now() - 5 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "You",
@@ -33,7 +33,7 @@ const initialState: ChatState = {
       id: "2",
       sender: "agent",
       text: "Hello! Yes, I picked up your order from the warehouse. I'll reach your location in about 25 minutes.",
-      timestamp: new Date(Date.now() - 4.5 * 60000),
+      timestamp: new Date(Date.now() - 4.5 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "Sarah",
@@ -42,7 +42,7 @@ const initialState: ChatState = {
       id: "3",
       sender: "user",
       text: "Great! Please handle carefully, these are heavy parts.",
-      timestamp: new Date(Date.now() - 4 * 60000),
+      timestamp: new Date(Date.now() - 4 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "You",
@@ -51,7 +51,7 @@ const initialState: ChatState = {
       id: "4",
       sender: "agent",
       text: "Don't worry, I've secured the parts in the truck. Do you prefer delivery at the garage entrance or inside the workshop?",
-      timestamp: new Date(Date.now() - 3.5 * 60000),
+      timestamp: new Date(Date.now() - 3.5 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "Sarah",
@@ -60,7 +60,7 @@ const initialState: ChatState = {
       id: "5",
       sender: "user",
       text: "At the garage entrance is fine. I'll be waiting there.",
-      timestamp: new Date(Date.now() - 3 * 60000),
+      timestamp: new Date(Date.now() - 3 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "You",
@@ -69,7 +69,7 @@ const initialState: ChatState = {
       id: "6",
       sender: "agent",
       text: "👍 I'll call you once I arrive",
-      timestamp: new Date(Date.now() - 2.5 * 60000),
+      timestamp: new Date(Date.now() - 2.5 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "Sarah",
@@ -78,7 +78,7 @@ const initialState: ChatState = {
       id: "7",
       sender: "user",
       text: "Thanks, see you soon!",
-      timestamp: new Date(Date.now() - 2 * 60000),
+      timestamp: new Date(Date.now() - 2 * 60000).toISOString(),
       avatar:
         "/driver.png",
       name: "You",

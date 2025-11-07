@@ -3,48 +3,39 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { RootState} from '../../../store/store';
 import { ChatMessage } from './components/chatMessage';
-import {addMessage} from '../../../store/features/chatSlice' 
+import {Message,addMessage} from '../../../store/features/chatSlice' 
 import { useAppDispatch,useAppSelector } from '../../../store/hooks';
+import { useSocket } from '@/app/socket-client';
 
 export const ChatContainer: React.FC = () => {
     const dispatch = useAppDispatch();
     const { messages, loading, userName, userAvatar } = useAppSelector((state: RootState) => state.chat);
     const [inputValue, setInputValue] = useState('');
+    const [allMessages,setAllMessages] = useState(messages)
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const socket = useSocket();
+    
+
+    useEffect(() => {
+        if (!socket) return;
+
+        socket.on("message", (message: Message) => {
+            setAllMessages((prev) => [...prev, message]);
+        });
+
+        return () => {
+            socket.off("message");
+        };
+    }, [socket]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
+        setAllMessages(messages);
         scrollToBottom();
     }, [messages]);
-
-
-
-   /* 
-    useEffect(() => {
-        socket.on("connect", () => {
-            console.log("🟢 Connected to server");
-        });
-
-        socket.on("message", (msg: string) => {
-            setChat((prev) => [...prev, msg]);
-        });
-
-        return () => {
-            socket.off("message");
-        };
-    }, []);
-
-    const sendMessage = () => {
-        if (message.trim()) {
-            socket.emit("message", message);
-            setChat((prev) => [...prev, message]); // show your own msg
-            setMessage("");
-        }
-    };
-    */
 
 
     const handleSendMessage = () => {
@@ -54,10 +45,15 @@ export const ChatContainer: React.FC = () => {
             id: Date.now().toString(),
             sender: 'user' as const,
             text: inputValue,
-            timestamp: new Date(),
+            timestamp: new Date().toISOString(),
             avatar: userAvatar,
             name: userName,
         };
+
+        if (socket) {
+            socket.emit("message", newMessage);
+        }
+
 
         dispatch(addMessage(newMessage));
         setInputValue('');
@@ -74,7 +70,7 @@ export const ChatContainer: React.FC = () => {
         <div className="md:w-4xl flex flex-col h-screen bg-white rounded-lg">
             {/* Messages Container */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
-                {messages.map((message) => (
+                {allMessages.map((message) => (
                     <ChatMessage
                         key={message.id}
                         message={message}
@@ -100,7 +96,7 @@ export const ChatContainer: React.FC = () => {
                     <textarea
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyPress}
                         placeholder="Type a message..."
                         rows={1}
                         className="flex-1 px-4 py-2 md:py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm md:text-base"
