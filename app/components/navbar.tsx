@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Logo from "../../components/logo";
 import { useDeviceType } from "../hooks/useDeviceType";
-
+import { useAppSelector } from "../store/hooks";
+import UserTab from './userTab'
 const Navbar = () => {
 
-
+  const user = useAppSelector((store)=>store.auth.user)
   const pathname = usePathname();
   const isMobile=useDeviceType()
   const navLinks = [
@@ -42,20 +43,7 @@ const Navbar = () => {
         ))}
       </div>)}
 
-      {!isMobile && <div className="flex items-center gap-4">
-        <Link
-          href="/auth/signin"
-          className="text1 px-5 py-2 border border-gray-400 rounded-lg text-[#333333] hover:bg-gray-100 transition"
-        >
-          Login
-        </Link>
-        <Link
-          href="/auth/signup"
-          className="text1 buttonColor text-white px-5 py-2 rounded-lg font-semibold shadow hover:opacity-90 transition"
-        >
-          Sign Up
-        </Link>
-      </div>}
+      {!isMobile && <UserTab></UserTab>}
       
     </nav>
   );
