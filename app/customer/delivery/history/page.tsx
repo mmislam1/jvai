@@ -81,7 +81,11 @@ export default function DeliveryOrdersPage() {
                     <div className="flex flex-row items-center justify-center gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
-                        <p className="text-md text-black">{order.timestamp}</p>
+                        <p className="text-md text-black">{new Date(order.timestamp).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                        })}</p>
                         
                     </div>
 
@@ -105,7 +109,11 @@ export default function DeliveryOrdersPage() {
                     <div className="flex flex-row items-center justify-center gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
-                        <p className="text-md text-black">{new Date(order.timestamp).toISOString()}</p>
+                        <p className="text-md text-black">{new Date(order.timestamp).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+  })}</p>
                         <p className="text-md text-black">-</p>
                         <p className="text-md text-yellow-700">{order.status}</p>
                     </div>
