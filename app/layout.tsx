@@ -24,9 +24,9 @@ export default function RootLayout({
       <ReduxProvider>
         <SocketProvider serverUrl="">
           <body
-            className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full overflow-x-hidden bg-gray-200`}
+            className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full  bg-gray-200`}
           >
-            <header className=" w-full">
+            <header className="sticky top-0 w-full">
               <Navbar></Navbar>
             </header>
             {children}
