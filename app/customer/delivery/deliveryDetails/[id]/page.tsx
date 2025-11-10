@@ -1,51 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { Star, ArrowLeft } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
+import { Star, ArrowLeft, HomeIcon } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import {
     updateDeliveryRequestFormField,
     resetDeliveryRequestForm,
     submitDeliveryRequest,
-} from "../../../store/features/customerSlice";
-import { RootState, AppDispatch } from "../../../store/store";
+} from "../../../../store/features/customerSlice";
+import { RootState, AppDispatch } from "../../../../store/store";
 import Image from "next/image";
 
 export default function DeliveryRequestPage() {
-    const dispatch = useDispatch<AppDispatch>();
-    const { deliveryRequest, delivery } = useSelector(
-        (state: RootState) => state.customer
+    const dispatch = useAppDispatch();
+    const currentActivity = useAppSelector(
+        (state: RootState) => state.customer.delivery.activities[1]
     );
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [showDriverInfo, setShowDriverInfo] = useState(false);
-    const currentActivity = delivery.activities[0];
-    const firstDriver = delivery.activities[0]?.driver;
-    const { formData, loading, error, success } = deliveryRequest;
+  
+    
     const [rating, setRating] = useState(0);
     const [rateNowClicked, setRateNowClicked] = useState(false);
-    const handleInputChange = (field: keyof typeof formData, value: string) => {
-        dispatch(updateDeliveryRequestFormField({ field, value }));
-    };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        try {
-            const result = await dispatch(submitDeliveryRequest(formData));
-            if (!result.payload.error) {
-                setShowDriverInfo(true);
-            }
-        } catch (err) {
-            console.error("Failed to submit delivery request", err);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleReset = () => {
-        dispatch(resetDeliveryRequestForm());
-        setShowDriverInfo(false);
-    };
 
     const handleRateNow = (star: number) => {
         setRating(star);
@@ -68,17 +43,12 @@ export default function DeliveryRequestPage() {
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Order ID
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    📋
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="#12345"
-                                    value={formData.orderId}
-                                    onChange={(e) => handleInputChange("orderId", e.target.value)}
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+                                
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
                         </div>
 
@@ -86,19 +56,12 @@ export default function DeliveryRequestPage() {
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Company Name
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    🏢
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="TruckParts BD"
-                                    value={formData.companyName}
-                                    onChange={(e) =>
-                                        handleInputChange("companyName", e.target.value)
-                                    }
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -109,46 +72,26 @@ export default function DeliveryRequestPage() {
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Product Short Description
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    📝
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="Engine Oil"
-                                    value={formData.productDescription}
-                                    onChange={(e) =>
-                                        handleInputChange("productDescription", e.target.value)
-                                    }
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
-                            <span className="text-sm text-gray-400 mt-1 block">
-                                (Optional)
-                            </span>
                         </div>
 
                         <div>
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Product Amount
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    💰
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="$1250"
-                                    value={formData.productAmount}
-                                    onChange={(e) =>
-                                        handleInputChange("productAmount", e.target.value)
-                                    }
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
-                            <span className="text-sm text-gray-400 mt-1 block">
-                                (Optional)
-                            </span>
                         </div>
                     </div>
 
@@ -160,19 +103,12 @@ export default function DeliveryRequestPage() {
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Pickup Location
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    📍
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="Gulshan-1"
-                                    value={formData.pickupLocation}
-                                    onChange={(e) =>
-                                        handleInputChange("pickupLocation", e.target.value)
-                                    }
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
                         </div>
 
@@ -180,19 +116,12 @@ export default function DeliveryRequestPage() {
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Delivery Location
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                    🏠
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="Badda -1"
-                                    value={formData.deliveryLocation}
-                                    onChange={(e) =>
-                                        handleInputChange("deliveryLocation", e.target.value)
-                                    }
-                                    className="w-full pl-12 pr-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                                />
+                            <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
+
+                                <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
+                                    <HomeIcon></HomeIcon>
+                                    TEST
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -206,14 +135,11 @@ export default function DeliveryRequestPage() {
                             {/* Avatar */}
                             <div className="relative w-50 h-50 rounded-full overflow-hidden flex-shrink-0">
                                 <Image
-                                    src={currentActivity.driver.avatar}
-                                    alt={currentActivity.driver.name}
+                                    src='/ellipse 7.png'
+                                    alt='driver'
                                     fill
                                     className="object-cover"
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).src =
-                                            "https://via.placeholder.com/96";
-                                    }}
+                                    
                                 />
                             </div>
 
