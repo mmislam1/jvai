@@ -43,7 +43,7 @@ const Navbar = () => {
         ))}
       </div>)}
 
-      {!isMobile && <UserTab></UserTab>}
+      <UserTab></UserTab>
       
     </nav>
   );
