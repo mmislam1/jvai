@@ -29,7 +29,7 @@ export default function DeliveryPage() {
     };
 
     return (
-        <div className="min-h-screen flex w-full max-w-2xl md: max-w-7xl p-2 md: w-7xl flex-col">
+        <div className="min-h-screen flex max-w-5xl md: max-w-7xl  md: w-4xl flex-col">
             {/* Header 
             <div className="w-full bg-white shadow-lg border-gray-200 sticky top-0 z-10">
                 <div className=" w-full mx-auto px-4 py-4 flex items-center justify-between">
@@ -53,7 +53,7 @@ export default function DeliveryPage() {
             </div>*/}
 
             {/* Main Content */}
-            <div className="w-full flex-1 flex flex-col items-center justify-start max-w-2xl mx-auto w-full px-4 py-8">
+            <div className="w-full flex-1 flex flex-col items-center justify-start  mx-auto w-full px-3 py-8">
                 {/* Stage 1: Confirm Price */}
                 
                     <div className="w-full flex flex-col items-center bg-white rounded-lg shadow-lg p-10">
@@ -92,22 +92,17 @@ export default function DeliveryPage() {
                         
 
                         {/* Driver Card */}
-                        <div className="w-full bg-white rounded-lg border border-gray-200 p-6 flex flex-col items-center space-y-4 shadow-lg">
-                        <div className="w-full text-center space-y-2">
-                            <p className="text-gray-700">
-                                Driver <span className="font-semibold text-amber-500">Rahim</span> accept your
+                        <div className="w-full bg-white rounded-lg border border-gray-200 flex flex-col items-center space-y-4 shadow-lg ">
+                        <div className="w-full text-center space-y-2 py-4 pt-6 border-b border-gray-300">
+                                <p className="font-semibold text-lg md:text-2xl text-gray-700">
+                                    Driver <span className="font-semibold text-lg md:text-2xl text-amber-500">Rahim</span> accepted your
                                 delivery request
                             </p>
                             <p className="text-sm text-gray-500">Arriving in 10 minutes (2.3 Miles)</p>
                         </div>
                             <div className="relative">
-                                <div className="w-28 h-28 rounded-full bg-green-200 flex items-center justify-center border-4 border-white shadow-md">
-                                    <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center text-2xl">
-                                        🚐
-                                    </div>
-                                </div>
-                                <div className="absolute top-0 right-0 bg-amber-500 rounded-full p-2 shadow-lg">
-                                    <MapPin size={20} className="text-white" />
+                                <div className="w-40 h-40 rounded-full flex items-center justify-center">
+                                    <Image src='/Ellipse 7.png' alt='driver' width='350' height='350'></Image>
                                 </div>
                             </div>
 
@@ -122,7 +117,7 @@ export default function DeliveryPage() {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+                            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 p-6 pb-8 md:px-38">
                                 <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors">
                                     <Phone size={20} />
                                     <span>Call Now</span>
