@@ -55,10 +55,10 @@ export default function Home() {
       
       <main className="w-full flex flex-col items-center justify-start self-start ">
         <div className="flex flex-col md:flex-row justify-between gap-[75px] w-full h-[495px] bg-[#333333] md:px-[150px] pt-[32px] pb-[50px]">
-          <div className="pt-10 md:pr-20">
+          <div className="pt-10 pl-6 md:pr-20">
             <p className="title1 text-white">Simplify Your Parts Delivery </p>
             <p className="title1 text-[#C59325]">-Track, Manage, Deliver</p>
-            <div className="flex flex-col items-start justify-start mt-45">
+            <div className="flex flex-col items-start justify-start mt-10 md:mt-45 mr-6">
               <div className="flex flex-row items-center justify-between h-[60px] w-full md:w-[350px]">
                 <Button size={60} text="Get Started" className="text1 px-10" />
                 <a href="https/youtube.com" className="">
@@ -67,7 +67,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {!isMobile && (<div className="">
+          {isMobile==='d' && (<div className="">
             <RoundedImage
               src="/driver2.png"
               curvature={80}
