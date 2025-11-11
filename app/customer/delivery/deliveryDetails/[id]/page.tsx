@@ -30,7 +30,7 @@ export default function DeliveryRequestPage() {
     };
 
     return (
-        <div className="w-full md:w-4xl min-h-screen bg-gradient-to-br bg-white ">
+        <div className="w-full md:w-4xl min-h-screen bg-gradient-to-br bg-white rounded-xl overflow-hidden m-6">
             <div className=" mx-auto">
                 <div className="bg-white p-6 md:p-10">
                     <h1 className="text-3xl font-bold text-gray-800 mb-8">
@@ -46,7 +46,7 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
                                 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
@@ -59,15 +59,15 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    
 
                     {/* Product Description and Amount */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                         <div>
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Product Short Description
@@ -75,7 +75,7 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
@@ -88,17 +88,17 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    
 
                     {/* Product Weight */}
 
                     {/* Pickup and Delivery Location */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                         <div>
                             <label className="block text-lg font-semibold text-gray-700 mb-3">
                                 Pickup Location
@@ -106,7 +106,7 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
@@ -119,7 +119,7 @@ export default function DeliveryRequestPage() {
                             <div className="flex flex-row items-center justify-center h-12 rounded-xl bg-[#FDF7E9] p-4 mb-4">
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
-                                    <HomeIcon></HomeIcon>
+                                    <HomeIcon strokeWidth={1}></HomeIcon>
                                     TEST
                                 </p>
                             </div>
