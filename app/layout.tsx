@@ -26,7 +26,7 @@ export default function RootLayout({
           <body
             className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full  bg-gray-200`}
           >
-            <header className="sticky top-0 w-full">
+            <header className="sticky top-0 z-50 w-full">
               <Navbar></Navbar>
             </header>
             {children}
