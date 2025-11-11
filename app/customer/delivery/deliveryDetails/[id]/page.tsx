@@ -30,7 +30,7 @@ export default function DeliveryRequestPage() {
     };
 
     return (
-        <div className="w-full md:w-4xl min-h-screen bg-gradient-to-br bg-white rounded-xl overflow-hidden m-6">
+        <div className="w-full md:w-4xl min-h-screen bg-gradient-to-br bg-white rounded-xl overflow-hidden mb-6">
             <div className=" mx-auto">
                 <div className="bg-white p-6 md:p-10">
                     <h1 className="text-3xl font-bold text-gray-800 mb-8">
