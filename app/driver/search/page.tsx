@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useDeviceType } from "@/app/hooks/useDeviceType";
 import { useAppDispatch,useAppSelector } from "@/app/store/hooks";
 import { BadgeDollarSign, MessageSquare, MessageSquareIcon, Plus } from "lucide-react";
+import Confirm from './components/confirm'
 
 
 const page = () => {
@@ -89,7 +90,7 @@ const page = () => {
             { /*Searching Section */}
 
 
-            <div className="w-full flex flex-col gap-4 items-center justify-center bg-white rounded-xl mb-6 py-10">
+            {true!==true?(<div className="w-full flex flex-col gap-4 items-center justify-center bg-white rounded-xl mb-6 py-10 h-[500px]">
                 <div className="w-full flex flex-row gap-2 items-center justify-center p-4">
                     <h2 className="flex flex-row text-xl md:text-3xl text-black font-semibold">
                         We're
@@ -109,7 +110,7 @@ const page = () => {
                         height={isMobile === 'd' ? 200 : 150}
                     ></Image>
                 </div>
-            </div>
+            </div>):<Confirm></Confirm>}
         </div>
     );
 };
