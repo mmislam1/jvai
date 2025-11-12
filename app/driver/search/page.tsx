@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useDeviceType } from "@/app/hooks/useDeviceType";
 import { useAppDispatch,useAppSelector } from "@/app/store/hooks";
+import { BadgeDollarSign, MessageSquare, MessageSquareIcon, Plus } from "lucide-react";
 
 
 const page = () => {
@@ -41,7 +42,7 @@ const page = () => {
                         </h1>
                     </div>
                 </div>
-                <div className="w-full flex md:flex-1 flex-row items-center justify-center rounded-xl shadow-lg p-4 px-8 gap-4 bg-white">
+                <div className="w-full flex md:flex-1 flex-row items-center justify-center rounded-xl shadow-lg p-4 pl-8 gap-4 bg-white">
                     <div className="flex items-center justify-center bg-gray-300 h-15 w-15 rounded-lg"></div>
                     <div className="flex flex-1 flex-col items-start justify-between h-22 px-3">
                         <p className="text-2xl">
@@ -60,9 +61,24 @@ const page = () => {
                 <h2 className="text-xl md:text-2xl text-black font-semibold">Actions</h2>
             </div>
             <div className="w-full flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div className="w-full md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white"></div>
-                <div className="w-full md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white"></div>
-                <div className="w-full md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white"></div>
+                <div className="w-full flex md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white">
+                    <Plus></Plus>
+                    <p className="text-3xl mt-6">
+                        Deliveries History
+                    </p>
+                </div>
+                <div className="w-full flex md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white">
+                    <BadgeDollarSign/>
+                    <p className="text-3xl mt-6">
+                        My Earnings
+                    </p>
+                </div>
+                <div className="w-full flex md:flex-1 flex-col items-center justify-center rounded-xl shadow-lg p-4 bg-white">
+                    <MessageSquare/>
+                    <p className="text-3xl mt-6">
+                        Messages
+                    </p>
+                </div>
             </div>
             <div className="w-full flex flex-row items-center justify-start p-2">
                 <h2 className="text-xl md:text-2xl text-black font-semibold">
