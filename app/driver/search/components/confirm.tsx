@@ -68,17 +68,17 @@ export default function Confirm() {
                     </div>
 
                     {/* Right Section - Action Buttons */}
-                    <div className="flex flex-col gap-4 justify-start lg:justify-center">
+                    <div className="flex flex-col gap-4 justify-start md:justify-center items-center">
                         <button
                             onClick={handleDecline}
-                            className="w-full py-3 px-4 border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+                            className="w-full md:w-[60%] py-3 px-4 border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
                         >
                             Decline
                         </button>
 
                         <button
                             onClick={handleAccept}
-                            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors ${isAccepted
+                            className={`w-full md:w-[60%] py-3 px-4 rounded-lg font-semibold text-white transition-colors ${isAccepted
                                     ? 'bg-green-500 hover:bg-green-600'
                                     : 'bg-blue-600 hover:bg-blue-700'
                                 }`}
