@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../api";
+import { Search } from "lucide-react";
 
-interface Delivery {
+export interface Delivery {
     deliveryId: string;
     orderId: string;
     orderDate: string;
@@ -17,7 +18,7 @@ interface Delivery {
     rating: number;
 }
 
-interface Profile {
+export interface Profile {
     name: string;
     totalEarning: number;
     driverId: string;
@@ -29,48 +30,70 @@ interface Profile {
     drivingLicense: string;
 }
 
-interface Message {
+export interface Message {
     userId: string;
     Text: string;
     Timestamp: string;
 }
 
-interface Messages {
+export interface Messages {
     orderId: string;
     clientId: string;
     clientAvatar: string;
     messages: Message[];
 }
 
-interface Notification{
+export interface Notification{
     id: string;
     text: string;
     timeStamp: string;
 }
 
-interface DriverState{
+export interface DriverState{
     profile: Profile|null;
     deliveries: Delivery[];
     messages: Messages[];
     notifications: Notification[];
+    searchDelivery: null| Delivery;
 }
 
-const initialState:DriverState={
+export const initialState:DriverState={
     profile:null,
     deliveries:[],
     messages:[],
-    notifications:[]
-
+    notifications:[],
+    searchDelivery: {deliveryId: 'string',
+    orderId: 'string',
+    orderDate: 'string',
+    deliveryDate: 'string',
+    payment: 7867,
+    Pickup: 'string',
+    dropOff: 'string',
+    Distance: 675688,
+    Earning: 465467879,
+    Company: 'string',
+    Status: "pending" ,
+    Description: 'string',
+    rating: 4,},
 }
 
 export const driverSlice = createSlice({
   name: "driver",
   initialState,
   reducers: {
-    
+    acceptOrder: (state) => {
+      state.deliveries=state.searchDelivery?[...state.deliveries,state.searchDelivery]:state.deliveries
+      state.searchDelivery=null
+    },
+    declineOrder: (state) => {
+      state.searchDelivery=null
+    },
   },
 });
 
 export const {
+    acceptOrder,
+    declineOrder,
+
 } = driverSlice.actions;
 export default driverSlice.reducer;

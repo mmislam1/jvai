@@ -90,7 +90,7 @@ const page = () => {
             { /*Searching Section */}
 
 
-            {true!==true?(<div className="w-full flex flex-col gap-4 items-center justify-center bg-white rounded-xl mb-6 py-10 h-[500px]">
+            {driver.searchDelivery===null?(<div className="w-full flex flex-col gap-4 items-center justify-center bg-white rounded-xl mb-6 py-10 h-[500px]">
                 <div className="w-full flex flex-row gap-2 items-center justify-center p-4">
                     <h2 className="flex flex-row text-xl md:text-3xl text-black font-semibold">
                         We're
@@ -110,7 +110,7 @@ const page = () => {
                         height={isMobile === 'd' ? 200 : 150}
                     ></Image>
                 </div>
-            </div>):<Confirm></Confirm>}
+            </div>):<Confirm/>}
         </div>
     );
 };
