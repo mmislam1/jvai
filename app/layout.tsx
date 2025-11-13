@@ -24,13 +24,13 @@ export default function RootLayout({
       <ReduxProvider>
         <SocketProvider serverUrl="">
           <body
-            className={`${inter.variable} antialiased flex flex-col items-center w-full max-w-full  bg-gray-200`}
+            className={`${inter.variable} min-h-screen antialiased flex flex-col items-center w-full max-w-full  bg-gray-200`}
           >
             <header className="sticky top-0 z-50 w-full">
               <Navbar></Navbar>
             </header>
             {children}
-            <footer className="w-full border border-black row-start-3 flex flex-wrap items-center justify-center">
+            <footer className="mt-auto w-full row-start-3 flex flex-wrap items-center justify-center">
               <Footer />
             </footer>
           </body>
