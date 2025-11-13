@@ -6,6 +6,7 @@ export interface Delivery {
     deliveryId: string;
     orderId: string;
     orderDate: string;
+    customerName: string;
     deliveryDate: string;
     payment: number;
     Pickup: string;
@@ -13,9 +14,11 @@ export interface Delivery {
     Distance: number;
     Earning: number;
     Company: string;
-    Status: "pending" | "delivered";
+    Status: "pending" | "accepted" | "pickedup" | "trip" | "reached" | "delivered";
     Description: string;
     rating: number;
+    vehicle: "bike" | "pickup" | "truck";
+    weight: number;
 }
 
 export interface Profile {
@@ -25,7 +28,7 @@ export interface Profile {
     Avatar: string;
     Email: string;
     phoneNumber: string;
-    Vehicle: "bike" | "pickup" | "truck";
+    vehicle: "bike" | "pickup" | "truck";
     vehicleRegistration: string;
     drivingLicense: string;
 }
@@ -43,57 +46,86 @@ export interface Messages {
     messages: Message[];
 }
 
-export interface Notification{
+export interface Notification {
     id: string;
     text: string;
     timeStamp: string;
 }
 
-export interface DriverState{
-    profile: Profile|null;
+export interface DriverState {
+    profile: Profile | null;
     deliveries: Delivery[];
     messages: Messages[];
     notifications: Notification[];
-    searchDelivery: null| Delivery;
+    searchDelivery: null | Delivery;
+    activeDelivery: Delivery | null;
 }
 
-export const initialState:DriverState={
-    profile:null,
-    deliveries:[],
-    messages:[],
-    notifications:[],
-    searchDelivery: {deliveryId: 'string',
-    orderId: 'string',
-    orderDate: 'string',
-    deliveryDate: 'string',
-    payment: 7867,
-    Pickup: 'string',
-    dropOff: 'string',
-    Distance: 675688,
-    Earning: 465467879,
-    Company: 'string',
-    Status: "pending" ,
-    Description: 'string',
-    rating: 4,},
+export const initialState: DriverState = {
+    profile: null,
+    deliveries: [],
+    messages: [],
+    notifications: [],
+    searchDelivery: {
+        deliveryId: 'string',
+        customerName: 'sdfgsdfg',
+        orderId: 'string',
+        orderDate: 'string',
+        deliveryDate: 'string',
+        payment: 7867,
+        Pickup: 'string',
+        dropOff: 'string',
+        Distance: 675688,
+        Earning: 465467879,
+        Company: 'string',
+        Status: "pending",
+        Description: 'string',
+        rating: 4,
+        vehicle: "truck",
+        weight: 454356,
+    },
+    activeDelivery: {
+        deliveryId: 'string',
+        customerName: 'sdfgsdfg',
+        orderId: 'string',
+        orderDate: 'string',
+        deliveryDate: 'string',
+        payment: 7867,
+        Pickup: 'string',
+        dropOff: 'string',
+        Distance: 675688,
+        Earning: 465467879,
+        Company: 'string',
+        Status: "pending",
+        Description: 'string',
+        rating: 4,
+        vehicle: "truck",
+        weight: 34345,
+    },
 }
 
 export const driverSlice = createSlice({
-  name: "driver",
-  initialState,
-  reducers: {
-    acceptOrder: (state) => {
-      state.deliveries=state.searchDelivery?[...state.deliveries,state.searchDelivery]:state.deliveries
-      state.searchDelivery=null
+    name: "driver",
+    initialState,
+    reducers: {
+        acceptOrder: (state) => {
+            state.deliveries = state.searchDelivery ? [...state.deliveries, state.searchDelivery] : state.deliveries
+            state.activeDelivery = state.searchDelivery
+            state.searchDelivery = null
+        },
+        declineOrder: (state) => {
+            state.searchDelivery = null
+        },
+        updateStatus: (state, action: PayloadAction<"pending" | "accepted" | "pickedup" | "trip" | "reached" | "delivered">) => {
+            if (state.activeDelivery) { state.activeDelivery.Status = action.payload }
+        }
     },
-    declineOrder: (state) => {
-      state.searchDelivery=null
-    },
-  },
 });
 
 export const {
     acceptOrder,
     declineOrder,
+    updateStatus,
 
 } = driverSlice.actions;
 export default driverSlice.reducer;
