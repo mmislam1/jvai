@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store"; // Adjust path as needed
-import { useAppDispatch, useAppSelector }from '../../store/hooks'
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Link from "next/link";
-import { ChevronRight, Loader } from "lucide-react";
+import { Calendar1Icon, ChevronRight, Loader } from "lucide-react";
+import DatePicker from "react-datepicker";
 
 interface OrderItem {
     id: string;
@@ -16,9 +17,10 @@ interface OrderItem {
 
 export default function DeliveryOrdersPage() {
     const dispatch = useAppDispatch();
-    const { delivery } = useSelector((state: RootState) => state.customer);
-    const view = useSelector((state: RootState) => state.customer.historyView);
+    const deliveries = useAppSelector((state) => state.driver.deliveries);
     const [isLoading, setIsLoading] = useState(true);
+    const [view, setView] = useState<"delivered" | "ongoing" | "date">("ongoing");
+    const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
     useEffect(() => {
         // Simulate data fetch or dispatch actions if needed
@@ -53,13 +55,6 @@ export default function DeliveryOrdersPage() {
         );
     }
 
-    const orders: OrderItem[] = delivery.activities.map((activity) => ({
-        id: activity.id,
-        orderId: activity.orderId,
-        status: activity.status,
-        timestamp: activity.timestamp,
-    }));
-
     function isISODateString(value: string): boolean {
         // Regex to roughly match ISO 8601 datetime strings
         const isoRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
@@ -72,22 +67,23 @@ export default function DeliveryOrdersPage() {
     }
 
     let content: React.ReactNode[] = [];
-    orders.map((order) => {
-        if (view === "delivered" && order.status === "delivered") {
+    deliveries.map((order) => {
+        if (view === "delivered" && order.Status === "delivered") {
             content.push(
                 <div
-                    key={order.id}
+                    key={order.orderId}
                     className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
                 >
                     <div className="flex flex-row items-center justify-center gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
-                        <p className="text-md text-black">{new Date(order.timestamp).toLocaleDateString('en-GB', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric',
-                        })}</p>
-
+                        <p className="text-md text-black">
+                            {new Date(order.deliveryDate).toLocaleDateString("en-GB", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                            })}
+                        </p>
                     </div>
 
                     <button className="shadow-sm rounded-lg">
@@ -99,24 +95,27 @@ export default function DeliveryOrdersPage() {
             );
         }
         if (
-            isISODateString(view) &&
-            new Date(order.timestamp).toISOString() === new Date(view).toISOString()
+            view === "date" &&
+            new Date(order.deliveryDate).toDateString() ===
+            new Date(selectedDate ? selectedDate : "").toDateString()
         ) {
             content.push(
                 <div
-                    key={order.id}
+                    key={order.orderId}
                     className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
                 >
                     <div className="flex flex-row items-center justify-center gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
-                        <p className="text-md text-black">{new Date(order.timestamp).toLocaleDateString('en-GB', {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric',
-                        })}</p>
+                        <p className="text-md text-black">
+                            {new Date(order.deliveryDate).toLocaleDateString("en-GB", {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric",
+                            })}
+                        </p>
                         <p className="text-md text-black">-</p>
-                        <p className="text-md text-yellow-700">{order.status}</p>
+                        <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
                     <button className="shadow-sm rounded-lg">
@@ -128,18 +127,19 @@ export default function DeliveryOrdersPage() {
             );
         }
 
-
-        if (!isISODateString(view) && view !== "delivered" && order.status !== 'delivered') {
+        if (
+            view==='ongoing' &&
+            order.Status !== "delivered"
+        ) {
             content.push(
                 <div
-                    key={order.id}
+                    key={order.orderId}
                     className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
                 >
                     <div className="flex flex-row items-center justify-center gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
-
-                        <p className="text-md text-yellow-700">{order.status}</p>
+                        <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
                     <button className="shadow-sm rounded-lg">
@@ -150,16 +150,71 @@ export default function DeliveryOrdersPage() {
                 </div>
             );
         }
-
-
-
     });
 
     return (
-        <div className="flex flex-col gap-2 w-4xl p-4 items-center justify-center bg-white shadow-lg rounded-xl">
-            {content.length > 0 ? content : (
-                <p className="text-gray-500 text-center py-4">No orders found.</p>
-            )}
-        </div>
+        <>
+            <div className="w-full flex flex-row items-center justify-between p-2">
+                <h2 className="text-xl md:text-2xl text-black font-semibold">
+                    Active Delivery
+                </h2>
+                <div className="flex flex-row items-center gap-6 justify-center">
+                    <DatePicker
+                        calendarClassName="border border-red-200 shadow-lg rounded-lg p-2"
+                        selected={selectedDate}
+                        onChange={(date: Date | null) => {
+                            setSelectedDate(date);
+                            if (date) {
+                                setSelectedDate(date);
+                                setView("date");
+                            }
+                        }}
+                        customInput={
+                            <button
+                                className={`mt-1 flex flex-row items-center font-semibold justify-around gap-2 px-2 rounded-md bg-white p-[.5px] ${view !== "ongoing" && view !== "delivered"
+                                        ? "border border-yellow-500 bg-yellow-500 text-white"
+                                        : "border border-gray-400 bg-white"
+                                    } `}
+                            >
+                                <Calendar1Icon />
+                                {selectedDate ? (
+                                    <p>{selectedDate ? selectedDate.toLocaleDateString() : ""}</p>
+                                ) : (
+                                    ""
+                                )}
+                            </button>
+                        }
+                        popperClassName="z-50"
+                        showPopperArrow={false}
+                    />
+
+                    <button
+                        className={`px-2 font-semibold rounded-md  ${view === "ongoing"
+                                ? "border border-yellow-500 bg-yellow-500 text-white"
+                                : "border border-gray-400 bg-white"
+                            }`}
+                        onClick={() => setView("ongoing")}
+                    >
+                        Ongoing
+                    </button>
+                    <button
+                        className={`px-2 font-semibold rounded-md bg-white ${view === "delivered"
+                                ? "border border-yellow-500 bg-yellow-500 text-white"
+                                : "border border-gray-400 bg-white"
+                            }`}
+                        onClick={() => setView("delivered")}
+                    >
+                        Delivered
+                    </button>
+                </div>
+            </div>
+            <div className="flex flex-col gap-2 w-full md:w-7xl p-4 items-center justify-center bg-white shadow-lg rounded-xl">
+                {content.length > 0 ? (
+                    content
+                ) : (
+                    <p className="text-gray-500 text-center py-4">No orders found.</p>
+                )}
+            </div>
+        </>
     );
 }

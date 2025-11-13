@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../api";
 import { Search } from "lucide-react";
+import {del} from '../data'
 
 export interface Delivery {
     deliveryId: string;
@@ -63,7 +64,7 @@ export interface DriverState {
 
 export const initialState: DriverState = {
     profile: null,
-    deliveries: [],
+    deliveries: del,
     messages: [],
     notifications: [],
     searchDelivery: {
