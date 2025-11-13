@@ -56,10 +56,10 @@ export default function DeliveryOrder() {
                     Active Delivery
                 </h2>
             </div>
-            <div className="w-full md:w-7xl bg-white p-6 rounded-xl mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
+            <div className="w-full md:w-7xl bg-white p-6 rounded-xl mb-6 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-7 gap-10 md:gap-36">
                     {/* Left Section */}
-                    <div className="md:col-span-4 space-y-6">
+                    <div className="md:col-span-4 space-y-6 md:pl-3">
                         {/* Header */}
                         <div className="flex justify-between items-start mb-8">
                             <div>
@@ -69,13 +69,13 @@ export default function DeliveryOrder() {
                                 <p className="text-blue-600 font-semibold text-lg mb-4">
                                     ID#{delivery?.orderId}
                                 </p>
-                                <p className="text-gray-700 text-lg font-semibold">
+                                <p className="text-gray-700 text-lg">
                                     Package: {delivery?.vehicle} - {(delivery?.weight)&&(delivery?.weight)/1000}kg
                                 </p>
                             </div>
 
                             {/* Contact Icons */}
-                            <div className="flex gap-3 bg-pink-500 rounded-2xl p-3">
+                            <div className="flex gap-2 bg-pink-500 rounded-2xl p-1">
                                 <button className="p-2 hover:bg-pink-600 rounded-lg transition">
                                     <Phone size={24} className="text-white" />
                                 </button>
@@ -86,7 +86,7 @@ export default function DeliveryOrder() {
                         </div>
 
                         {/* Locations */}
-                        <div className="space-y-4 mb-8">
+                        <div className="space-y-4 mb-8 pl-3">
                             <div className="flex items-start gap-4">
                                 <div className="text-blue-600 mt-1">
                                     <Package size={24} />
@@ -108,10 +108,10 @@ export default function DeliveryOrder() {
 
                         {/* Action Buttons */}
                         <div className="flex gap-4 flex-col md:flex-row">
-                            <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition text-lg" onClick={() => statusUpdate(delivery?.Status)}>
+                            <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-xl transition text-lg" onClick={() => statusUpdate(delivery?.Status)}>
                                 {delivery?.Status}
                             </button>
-                            <button className="flex-1 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 rounded-xl transition flex items-center justify-center gap-3 text-lg">
+                            <button className="flex-1 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-2 rounded-xl transition flex items-center justify-center gap-3 text-lg">
                                 <PhoneCall size={20} />
                                 Call to company
                             </button>
