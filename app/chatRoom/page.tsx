@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import { RootState} from '../../../store/store';
+import { RootState} from '../store/store';
 import { ChatMessage } from './components/chatMessage';
-import {Message,addMessage} from '../../../store/features/chatSlice' 
-import { useAppDispatch,useAppSelector } from '../../../store/hooks';
+import {Message,addMessage} from '../store/features/chatSlice' 
+import { useAppDispatch,useAppSelector } from '../store/hooks';
 import { useSocket } from '@/app/socket-client';
 
 export const ChatContainer: React.FC = () => {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchNotifications, deleteNotification, clearAllNotifications } from '../../../app/store/features/customerSlice'
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { fetchNotifications, deleteNotification, clearAllNotifications } from '../store/features/customerSlice'
 import { ChevronLeft } from 'lucide-react';
 import NotificationCard from '@/components/notificationCard';
 
