@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
 import customerReducer from './features/customerSlice';
 import chatReducer from './features/chatSlice'; 
-import driverReducer from './features/driverSlice'
+import driverReducer from './features/driverSlice';
+import notificationReducer from './features/notificationSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     customer: customerReducer,
     chat: chatReducer,
     driver: driverReducer,
+    notifications: notificationReducer,
     
   },
 });
