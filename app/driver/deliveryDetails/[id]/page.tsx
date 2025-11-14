@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState,use } from "react";
-import { Star, ArrowLeft, HomeIcon } from "lucide-react";
+import { Star, ArrowLeft, HomeIcon, DropletIcon, PinIcon, MapPin } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import {
     updateDeliveryRequestFormField,
@@ -134,6 +134,15 @@ export default function DeliveryRequestPage({params}:Props) {
                                     className="object-cover"
                                     
                                 />
+                            </div>
+                            <div className="flex flex-row items-center justify-center gap-2">
+                                <MapPin stroke-width={1}/>
+                                <p className="text-md">{`${item?.Pickup} to`}</p>
+                                <MapPin stroke-width={1}/>
+                                <p className="text-md">{`${item?.dropOff}`}</p>
+                            </div>
+                            <div className="flex flex-row items-center justify-center gap-6">
+                                
                             </div>
 
                         </div>

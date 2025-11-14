@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Link from "next/link";
 import { Calendar1Icon, ChevronRight, Loader } from "lucide-react";
 import DatePicker from "react-datepicker";
+import { useRouter } from "next/navigation";
 
 interface OrderItem {
     id: string;
@@ -16,6 +17,7 @@ interface OrderItem {
 }
 
 export default function DeliveryOrdersPage() {
+    const router=useRouter()
     const dispatch = useAppDispatch();
     const deliveries = useAppSelector((state) => state.driver.deliveries);
     const [isLoading, setIsLoading] = useState(true);
@@ -86,7 +88,7 @@ export default function DeliveryOrdersPage() {
                         </p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg">
+                    <button className="shadow-sm rounded-lg" onClick={()=>router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -118,7 +120,7 @@ export default function DeliveryOrdersPage() {
                         <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg">
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -142,7 +144,7 @@ export default function DeliveryOrdersPage() {
                         <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg">
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
