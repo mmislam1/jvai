@@ -10,9 +10,7 @@ export default function RootLayout({children} : {children : ReactNode}){
   const view=useAppSelector((state)=>state.driver.view)
   const date = useAppSelector((state) => state.driver.date)
 
-  useEffect(
-    ()=>{}
-    , [useAppSelector((state) => state.driver.date)])
+  
   return (
   <>
     <div className="w-full md:w-4xl flex flex-row items-center justify-between p-2">
