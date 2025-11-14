@@ -43,6 +43,7 @@ export const ChatContainer: React.FC = () => {
 
         const newMessage = {
             id: Date.now().toString(),
+            userId: 'user:'+Date.now().toString(),
             sender: 'user' as const,
             text: inputValue,
             timestamp: new Date().toISOString(),
