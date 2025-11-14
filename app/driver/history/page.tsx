@@ -104,7 +104,7 @@ export default function DeliveryOrdersPage() {
                     key={order.orderId}
                     className="flex flex-row w-full p-2 items-center justify-between bg-[#ddbb1133] rounded-lg"
                 >
-                    <div className="flex flex-row items-center justify-center gap-6 ">
+                    <div className="flex flex-row items-center justify-center gap-2 md: gap-6 ">
                         <p className="text-md text-black">ID: {order.orderId}</p>
 
                         <p className="text-md text-black">
@@ -158,7 +158,7 @@ export default function DeliveryOrdersPage() {
                 <h2 className="text-xl md:text-2xl text-black font-semibold">
                     Active Delivery
                 </h2>
-                <div className="flex flex-row items-center gap-6 justify-center">
+                <div className="flex flex-row items-center gap-2 md:gap-6 justify-center flex-wrap">
                     <DatePicker
                         calendarClassName="border border-red-200 shadow-lg rounded-lg p-2"
                         selected={selectedDate}
