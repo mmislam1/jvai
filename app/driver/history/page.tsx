@@ -21,8 +21,8 @@ export default function DeliveryOrdersPage() {
     const dispatch = useAppDispatch();
     const deliveries = useAppSelector((state) => state.driver.deliveries);
     const [isLoading, setIsLoading] = useState(true);
-    const [view, setView] = useState<"delivered" | "ongoing" | "date">("ongoing");
-    const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+    const view = useAppSelector((state) => state.driver.view)
+    const date = useAppSelector((state) => state.driver.date)
 
     useEffect(() => {
         // Simulate data fetch or dispatch actions if needed
@@ -88,7 +88,7 @@ export default function DeliveryOrdersPage() {
                         </p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg" onClick={()=>router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/history/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -99,7 +99,7 @@ export default function DeliveryOrdersPage() {
         if (
             view === "date" &&
             new Date(order.deliveryDate).toDateString() ===
-            new Date(selectedDate ? selectedDate : "").toDateString()
+            new Date(date ? date : "").toDateString()
         ) {
             content.push(
                 <div
@@ -120,7 +120,7 @@ export default function DeliveryOrdersPage() {
                         <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/history/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -144,7 +144,7 @@ export default function DeliveryOrdersPage() {
                         <p className="text-md text-yellow-700">{order.Status}</p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/deliveryDetails/${order?.orderId}`)}>
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/driver/history/${order?.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -156,60 +156,6 @@ export default function DeliveryOrdersPage() {
 
     return (
         <>
-            <div className="w-full flex flex-row items-center justify-between p-2">
-                <h2 className="text-xl md:text-2xl text-black font-semibold">
-                    Active Delivery
-                </h2>
-                <div className="flex flex-row items-center gap-2 md:gap-6 justify-center flex-wrap">
-                    <DatePicker
-                        calendarClassName="border border-red-200 shadow-lg rounded-lg p-2"
-                        selected={selectedDate}
-                        onChange={(date: Date | null) => {
-                            setSelectedDate(date);
-                            if (date) {
-                                setSelectedDate(date);
-                                setView("date");
-                            }
-                        }}
-                        customInput={
-                            <button
-                                className={`mt-1 flex flex-row items-center font-semibold justify-around gap-2 px-2 rounded-md bg-white p-[.5px] ${view !== "ongoing" && view !== "delivered"
-                                        ? "border border-yellow-500 bg-yellow-500 text-white"
-                                        : "border border-gray-400 bg-white"
-                                    } `}
-                            >
-                                <Calendar1Icon />
-                                {selectedDate ? (
-                                    <p>{selectedDate ? selectedDate.toLocaleDateString() : ""}</p>
-                                ) : (
-                                    ""
-                                )}
-                            </button>
-                        }
-                        popperClassName="z-50"
-                        showPopperArrow={false}
-                    />
-
-                    <button
-                        className={`px-2 font-semibold rounded-md  ${view === "ongoing"
-                                ? "border border-yellow-500 bg-yellow-500 text-white"
-                                : "border border-gray-400 bg-white"
-                            }`}
-                        onClick={() => setView("ongoing")}
-                    >
-                        Ongoing
-                    </button>
-                    <button
-                        className={`px-2 font-semibold rounded-md bg-white ${view === "delivered"
-                                ? "border border-yellow-500 bg-yellow-500 text-white"
-                                : "border border-gray-400 bg-white"
-                            }`}
-                        onClick={() => setView("delivered")}
-                    >
-                        Delivered
-                    </button>
-                </div>
-            </div>
             <div className="flex flex-col gap-2 w-full md:w-7xl p-4 items-center justify-center bg-white shadow-lg rounded-xl">
                 {content.length > 0 ? (
                     content

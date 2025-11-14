@@ -60,6 +60,8 @@ export interface DriverState {
     notifications: Notification[];
     searchDelivery: null | Delivery;
     activeDelivery: Delivery | null;
+    view:'date'|'ongoing' | 'delivered';
+    date: string;
 }
 
 export const initialState: DriverState = {
@@ -103,6 +105,8 @@ export const initialState: DriverState = {
         vehicle: "truck",
         weight: 34345,
     },
+    view: 'ongoing',
+    date: new Date().toISOString()
 }
 
 export const driverSlice = createSlice({
@@ -119,6 +123,12 @@ export const driverSlice = createSlice({
         },
         updateStatus: (state, action: PayloadAction<"pending" | "accepted" | "pickedup" | "trip" | "reached" | "delivered">) => {
             if (state.activeDelivery) { state.activeDelivery.Status = action.payload }
+        },
+        setView: (state, action: PayloadAction<'date' | 'ongoing' | 'delivered'>)=>{
+            state.view=action.payload
+        },
+        setDate: (state, action: PayloadAction<string>)=>{
+            state.date=action.payload
         }
     },
 });
@@ -127,6 +137,7 @@ export const {
     acceptOrder,
     declineOrder,
     updateStatus,
-
+    setView,
+    setDate,
 } = driverSlice.actions;
 export default driverSlice.reducer;

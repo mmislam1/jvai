@@ -82,7 +82,7 @@ export default function DeliveryRequestPage({params}:Props) {
 
                                 <p className="w-full flex flex-row items-center justify-start gap-4 text-md text-#545454">
                                     <HomeIcon strokeWidth={1}></HomeIcon>
-                                    {item?.weight ? item.weight : 0 /1000} Kg
+                                    {item?.weight? item.weight:0/1000} Kg
                                 </p>
                             </div>
                         </div>
