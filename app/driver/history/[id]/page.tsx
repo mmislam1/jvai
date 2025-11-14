@@ -10,6 +10,7 @@ import {
 } from "../../../store/features/customerSlice";
 import { RootState, AppDispatch } from "../../../store/store";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface Props {
     params: { id: string };
@@ -17,6 +18,7 @@ interface Props {
 
 
 export default function DeliveryRequestPage({params}:Props) {
+    const router=useRouter()
     const dispatch = useAppDispatch();
     const item = useAppSelector(
         (state) => state.driver.deliveries
@@ -145,7 +147,7 @@ export default function DeliveryRequestPage({params}:Props) {
                                 <button className="w-full flex items-center justify-center bg-[#5F31EB] rounded-md p-2 border-2 border-[#5F31EB]">
                                     <p className='flex flex-row items-center justify-center gap-4 text-md text-white'><PhoneCallIcon></PhoneCallIcon> Call Now</p>
                                 </button>
-                                <button className="w-full flex items-center justify-center border-2 border-gray-400 rounded-md p-2">
+                                <button className="w-full flex items-center justify-center border-2 border-gray-400 rounded-md p-2" onClick={()=>router.push('/chatRoom')}>
                                     <p className='flex flex-row items-center justify-center gap-4 text-md '><MessageSquare/>  Message</p>
                                 </button>
                             </div>
