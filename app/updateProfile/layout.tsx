@@ -10,6 +10,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import Button from "@/components/button";
 import { ArrowBigLeft, ArrowLeft } from "lucide-react";
+import { usePathname } from "next/navigation";
+
 
 interface MenuItem {
     label: string;
@@ -23,7 +25,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
     const [phone, setPhone] = useState("");
     const [isSaving, setIsSaving] = useState(false);
     const [saveMessage, setSaveMessage] = useState("");
-
+    const path=usePathname().slice(15)
     useEffect(() => {
         if (user?.phone) {
             setPhone(user.phone);
@@ -32,10 +34,10 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 
     const menuItems: MenuItem[] = [
         { label: "Profile Information", href: `/updateProfile/driver`},
-        { label: "Change Password", href: "/updateProfile/changePassword" },
-        { label: "Terms and Service", href: "/updateProfile/terms&service" },
-        { label: "Privacy and Policy", href: "/updateProfile/privacy&policy" },
-        { label: "About Us", href: "/updateProfile/about" },
+        { label: "Change Password", href: "/updateProfile/changepassword" },
+        { label: "Terms & Service", href: "/updateProfile/terms&service" },
+        { label: "Privacy & Policy", href: "/updateProfile/privacy&policy" },
+        { label: "About", href: "/updateProfile/about" },
     ];
 
     const handleSave = async () => {
@@ -97,9 +99,9 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="flex items-center justify-start pl-6 px-4 py-3 hover:bg-gray-50 transition-colors group"
+                                    className="flex items-center justify-start pl-6 px-4 py-3 hover:bg-violet-100 transition-colors group"
                                 >
-                                    <span className="text-gray-700 font-medium group-hover:text-gray-900">
+                                    <span className={`  ${path === item.label.replace(/\s+/g, "").toLowerCase() ? 'font-semibold text-violet-700':'font-medium text-gray-700' } group-hover:text-violet-500`}>
                                         {item.label}
                                     </span>
                                     <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600" />
