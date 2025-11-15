@@ -126,8 +126,8 @@ export default function DriverProfileForm() {
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto px-4 py-8">
-            <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="w-full max-w-2xl mx-auto px-4 pt-6">
+            <form onSubmit={handleSubmit} className="space-y-8 ">
                 {/* Avatar Section */}
                 <div className="flex flex-col items-center md:items-start justify-start gap-2">
                     <div className="relative w-30 h-30 rounded-full border-2 border-blue-600 overflow-hidden bg-gray-100">
