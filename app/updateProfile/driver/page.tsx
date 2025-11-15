@@ -129,8 +129,8 @@ export default function DriverProfileForm() {
         <div className="w-full max-w-2xl mx-auto px-4 py-8">
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Avatar Section */}
-                <div className="flex flex-col items-center gap-4">
-                    <div className="relative w-24 h-24 rounded-full border-4 border-blue-600 overflow-hidden bg-gray-100">
+                <div className="flex flex-col items-center md:items-start justify-start gap-2">
+                    <div className="relative w-30 h-30 rounded-full border-2 border-blue-600 overflow-hidden bg-gray-100">
                         {avatarPreview ? (
                             <Image
                                 src={avatarPreview}
@@ -153,17 +153,13 @@ export default function DriverProfileForm() {
                             onChange={handleAvatarChange}
                             className="hidden"
                         />
-                        <span className="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                            Change Avatar
-                        </span>
+                        
                     </label>
                 </div>
 
                 {/* Name Field */}
                 <div>
-                    <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-2">
-                        Enter your Name
-                    </label>
+                    
                     <input
                         id="name"
                         type="text"
@@ -171,15 +167,13 @@ export default function DriverProfileForm() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your Name"
-                        className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                        className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                     />
                 </div>
 
                 {/* Email Field */}
                 <div>
-                    <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">
-                        Enter your Email
-                    </label>
+                    
                     <input
                         id="email"
                         type="email"
@@ -187,15 +181,13 @@ export default function DriverProfileForm() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Enter your Email"
-                        className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                        className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                     />
                 </div>
 
                 {/* Phone Number Field */}
                 <div>
-                    <label htmlFor="phone" className="block text-gray-700 text-sm font-medium mb-2">
-                        Enter your phone number
-                    </label>
+                    
                     <input
                         id="phone"
                         type="tel"
@@ -203,22 +195,20 @@ export default function DriverProfileForm() {
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
                         placeholder="Enter your phone number"
-                        className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                        className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                     />
                 </div>
 
                 {/* Vehicle Selection */}
                 <div>
-                    <label className="block text-gray-700 text-sm font-medium mb-4">
-                        Select Vehicle
-                    </label>
-                    <div className="flex flex-wrap gap-3 sm:gap-4">
+                    
+                    <div className="flex flex-col md:flex-row gap-3 ">
                         {(['bike', 'pickup', 'truck'] as const).map((vehicleType) => (
                             <button
                                 key={vehicleType}
                                 type="button"
                                 onClick={() => handleVehicleSelect(vehicleType)}
-                                className={`flex-1 min-w-[100px] px-6 py-3 rounded-lg font-medium transition-all ${formData.vehicle === vehicleType
+                                className={`flex-1 min-w-[100px] px-6 py-2 rounded-lg font-medium transition-all ${formData.vehicle === vehicleType
                                         ? 'bg-blue-600 text-white shadow-lg'
                                         : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
                                     }`}
@@ -231,9 +221,7 @@ export default function DriverProfileForm() {
 
                 {/* Vehicle Registration Field */}
                 <div>
-                    <label htmlFor="registration" className="block text-gray-700 text-sm font-medium mb-2">
-                        Vehicle Registration
-                    </label>
+                    
                     <input
                         id="registration"
                         type="text"
@@ -241,15 +229,13 @@ export default function DriverProfileForm() {
                         value={formData.vehicleRegistration}
                         onChange={handleInputChange}
                         placeholder="Vehicle Registration Number"
-                        className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                        className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                     />
                 </div>
 
                 {/* Driving License Field */}
                 <div>
-                    <label htmlFor="license" className="block text-gray-700 text-sm font-medium mb-2">
-                        Driving License Number
-                    </label>
+                    
                     <input
                         id="license"
                         type="text"
@@ -257,20 +243,20 @@ export default function DriverProfileForm() {
                         value={formData.drivingLicense}
                         onChange={handleInputChange}
                         placeholder="Driving License Number"
-                        className="w-full px-4 py-3 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
+                        className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-blue-600 focus:outline-none transition-colors text-gray-800 placeholder-gray-400"
                     />
                 </div>
 
                 {/* Error Message */}
                 {error && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div className="p-2 bg-red-50 border border-red-200 rounded-lg">
                         <p className="text-red-700 text-sm font-medium">{error}</p>
                     </div>
                 )}
 
                 {/* Success Message */}
                 {success && (
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="p-2 bg-green-50 border border-green-200 rounded-lg">
                         <p className="text-green-700 text-sm font-medium">
                             Profile saved successfully!
                         </p>
@@ -281,7 +267,7 @@ export default function DriverProfileForm() {
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                     {isLoading ? (
                         <>

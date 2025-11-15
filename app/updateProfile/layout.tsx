@@ -31,11 +31,11 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
     }, [user]);
 
     const menuItems: MenuItem[] = [
-        { label: "Profile Information", href: "/settings/profile" },
-        { label: "Change Password", href: "/settings/password" },
-        { label: "Terms and Service", href: "/settings/terms" },
-        { label: "Privacy and Policy", href: "/settings/privacy" },
-        { label: "About Us", href: "/settings/about" },
+        { label: "Profile Information", href: `/updateProfile/driver`},
+        { label: "Change Password", href: "/updateProfile/changePassword" },
+        { label: "Terms and Service", href: "/updateProfile/terms&service" },
+        { label: "Privacy and Policy", href: "/updateProfile/privacy&policy" },
+        { label: "About Us", href: "/updateProfile/about" },
     ];
 
     const handleSave = async () => {
@@ -91,13 +91,13 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
             <div className="flex flex-row items-center justify-center max-w-7xl px-4 sm:px-6 lg:px-8 py-8  w-full">
                 
                     {/* Sidebar Menu */}
-                <div className="flex flex-row items-center justify-center bg-white w-full rounded-lg p-4">
-                    <nav className="space-y-1 overflow-hidden border-yellow-300 border-r-[3px] w-[30%]">
+                <div className=" flex flex-col md:flex-row items-stretch justify-center bg-white w-full rounded-lg p-6">
+                    <nav className="min-h-[100%] space-y-1 overflow-hidden border-yellow-300 border-r-[3px] w-full md:w-[30%]">
                             {menuItems.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="flex items-center justify-between pl-6 px-4 py-3 hover:bg-gray-50 transition-colors group"
+                                    className="flex items-center justify-start pl-6 px-4 py-3 hover:bg-gray-50 transition-colors group"
                                 >
                                     <span className="text-gray-700 font-medium group-hover:text-gray-900">
                                         {item.label}
@@ -106,7 +106,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
                                 </Link>
                             ))}
                         </nav>
-                    <div className="flex flex-row items-center justify-center w-[70%]">{children}</div>
+                    <div className="flex flex-col items-center justify-start w-full md:w-[70%]">{children}</div>
                     </div>
 
                 </div>    
