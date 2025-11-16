@@ -16,7 +16,7 @@ interface OrderStep {
     completed: boolean;
 }
 
-export default function TrackOrderPage( params : { params: { orderId: string } }) {
+export default function TrackOrderPage( ) {
     const router = useRouter();
     const [rating, setRating] = useState(0);
     const [rateNowClicked, setRateNowClicked] = useState(false);
@@ -35,28 +35,28 @@ export default function TrackOrderPage( params : { params: { orderId: string } }
             id: 'placed',
             label: 'Order Placed',
             description: 'Your order has been confirmed',
-            icon: '✓',
+            icon: '',
             completed: true,
         },
         {
             id: 'picked',
             label: 'Picked Up',
             description: "Your order is on it's way",
-            icon: '📦',
+            icon: '',
             completed: true,
         },
         {
             id: 'on-way',
             label: 'On the Way',
             description: 'The driver is heading to you',
-            icon: '📍',
+            icon: '',
             completed: true,
         },
         {
             id: 'delivered',
             label: 'Delivered',
             description: 'Take your parts',
-            icon: '🏠',
+            icon: '',
             completed: true,
         },
     ];
