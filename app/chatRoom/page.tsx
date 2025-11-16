@@ -7,7 +7,7 @@ import {Message,addMessage} from '../store/features/chatSlice'
 import { useAppDispatch,useAppSelector } from '../store/hooks';
 import { useSocket } from '@/app/socket-client';
 
-export const ChatRoom: React.FC = () => {
+export const ChatRoom= () => {
     const dispatch = useAppDispatch();
     const { messages, loading, userName, userAvatar } = useAppSelector((state: RootState) => state.chat);
     const [inputValue, setInputValue] = useState('');
