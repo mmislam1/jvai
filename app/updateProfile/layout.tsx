@@ -11,7 +11,7 @@ import { ChevronRight } from "lucide-react";
 import Button from "@/components/button";
 import { ArrowBigLeft, ArrowLeft } from "lucide-react";
 import { usePathname } from "next/navigation";
-
+import Back from '../components/back'
 
 interface MenuItem {
     label: string;
@@ -80,17 +80,17 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 
     return (
         <div className="flex flex-col items-center justify-start max-w-7xl min-h-screen w-full md:w-4xl">
-            <div className="flex flex-row items-center justify-start max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-row items-center justify-start max-w-7xl w-full py-2">
                 <Link
                     href="/profile"
-                    className="flex flex-row items-center justify-center p-2 gap-2 font-semibold"
+                    className="flex flex-row items-center justify-center py-2 gap-2 font-semibold"
                 >
-                    <ArrowLeft></ArrowLeft>
+                    <Back/>
                     <h2>Profile</h2>
                 </Link>
             </div>
 
-            <div className="flex flex-row items-center justify-center max-w-7xl px-4 sm:px-6 lg:px-8 py-8  w-full">
+            <div className="flex flex-row items-center justify-center max-w-7xl  w-full">
                 
                     {/* Sidebar Menu */}
                 <div className=" flex flex-col md:flex-row items-stretch justify-center bg-white w-full rounded-lg p-6">
