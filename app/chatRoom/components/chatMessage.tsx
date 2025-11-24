@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Message } from '../../../../store/features/chatSlice';
+import { Message } from '../../store/features/chatSlice';
 
 interface ChatMessageProps {
     message: Message;

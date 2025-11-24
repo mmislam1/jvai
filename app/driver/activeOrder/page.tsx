@@ -18,7 +18,7 @@ export default function DeliveryOrder() {
     const dispatch=useAppDispatch()
     const delivery= useAppSelector((store)=>store.driver.activeDelivery)
 
-    const statusUpdate=(curr : "pending" | "accepted" | "pickedup" | "trip" | "reached" | "delivered")=>{
+    const statusUpdate=(curr : "pending" | "accepted" | "pickedup" | "trip" | "reached" | "delivered"| undefined)=>{
        
 
         switch (curr) {

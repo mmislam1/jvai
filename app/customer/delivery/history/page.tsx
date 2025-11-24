@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../../store/store"; // Adjust path as needed
 import Link from "next/link";
 import { ChevronRight, Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface OrderItem {
     id: string;
@@ -18,6 +19,7 @@ export default function DeliveryOrdersPage() {
     const { delivery } = useSelector((state: RootState) => state.customer);
     const view = useSelector((state: RootState) => state.customer.historyView);
     const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         // Simulate data fetch or dispatch actions if needed
@@ -89,7 +91,7 @@ export default function DeliveryOrdersPage() {
                         
                     </div>
 
-                    <button className="shadow-sm rounded-lg">
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/customer/delivery/deliveryDetails/${order.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -118,7 +120,7 @@ export default function DeliveryOrdersPage() {
                         <p className="text-md text-yellow-700">{order.status}</p>
                     </div>
 
-                    <button className="shadow-sm rounded-lg">
+                    <button className="shadow-sm rounded-lg" onClick={() => router.push(`/customer/delivery/deliveryDetails/${order.orderId}`)}>
                         <div className="m-auto p-2 bg-white rounded-lg ">
                             <ChevronRight></ChevronRight>
                         </div>
@@ -140,7 +142,7 @@ export default function DeliveryOrdersPage() {
                             <p className="text-md text-yellow-700">{order.status}</p>
                         </div>
 
-                        <button className="shadow-sm rounded-lg">
+                <button className="shadow-sm rounded-lg" onClick={() => router.push(`/customer/delivery/deliveryDetails/${order.orderId}`)}>
                             <div className="m-auto p-2 bg-white rounded-lg ">
                                 <ChevronRight></ChevronRight>
                             </div>
